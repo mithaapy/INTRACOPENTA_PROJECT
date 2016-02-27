@@ -1,0 +1,248 @@
+[03-Aug-2015 13:50:54 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '}' in /home/intn2489/public_html/application/views/kuncoro/openbiding.php on line 145
+[06-Aug-2015 09:15:00 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/intn2489/public_html/application/views/kuncoro/prospectregister.php on line 143
+[06-Aug-2015 09:15:19 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/intn2489/public_html/application/views/kuncoro/prospectregister.php on line 143
+[09-Aug-2015 19:20:04 Asia/Jakarta] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'assets/conn.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/intn2489/public_html/application/views/kuncoroless/export_kuncoro.php on line 4
+[10-Aug-2015 15:50:46 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/kuncoroless/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('kuncoroless/exp...', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 15:52:32 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/kuncoroless/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('kuncoroless/exp...', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 15:53:06 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/kuncoroless/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('kuncoroless/exp...', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 15:53:11 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/kuncoroless/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('kuncoroless/exp...', Array)
+#4 [internal function]: Frontpage->exportExcel('2.xls')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 15:53:16 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/kuncoroless/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('kuncoroless/exp...', Array)
+#4 [internal function]: Frontpage->exportExcel('2.xlsx')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 15:58:50 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:02:23 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:05:36 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:05:39 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:05:42 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:05:44 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:05:48 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:07:15 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Aug-2015 16:24:13 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not close zip file assets/reportdownloaded/.xlsx.' in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php:346
+Stack trace:
+#0 /home/intn2489/public_html/application/views/export_kuncoro.php(41): PHPExcel_Writer_Excel2007->save('assets/reportdo...')
+#1 /home/intn2489/public_html/system/core/Loader.php(833): include('/home/intn2489/...')
+#2 /home/intn2489/public_html/system/core/Loader.php(419): CI_Loader->_ci_load(Array)
+#3 /home/intn2489/public_html/application/controllers/frontpage.php(1217): CI_Loader->view('export_kuncoro', Array)
+#4 [internal function]: Frontpage->exportExcel('2')
+#5 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#6 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#7 {main}
+  thrown in /home/intn2489/public_html/assets/Classes/PHPExcel/Writer/Excel2007.php on line 346
+[10-Sep-2015 11:10:57 Asia/Jakarta] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/intn2489/public_html/application/models/unit_model.php on line 724
+[10-Sep-2015 11:11:02 Asia/Jakarta] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/intn2489/public_html/application/models/unit_model.php on line 724
+[10-Sep-2015 11:22:05 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Unit_model::getLeadDetailRegistration() in /home/intn2489/public_html/application/models/unit_model.php on line 758
+[15-Sep-2015 12:06:38 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '{' in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 204
+[15-Sep-2015 12:12:07 Asia/Jakarta] PHP Fatal error:  Call to a member function printPDF() on a non-object in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 177
+[15-Sep-2015 12:18:33 Asia/Jakarta] PHP Fatal error:  Call to undefined method FPDF::printPDF() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 6
+[15-Sep-2015 12:18:36 Asia/Jakarta] PHP Fatal error:  Call to undefined method FPDF::printPDF() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 6
+[22-Sep-2015 10:12:49 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:12:50 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:12:50 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:12:51 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:24 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:25 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:26 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:27 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:27 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:28 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:46 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:47 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:57 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:13:57 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 14
+[22-Sep-2015 10:15:01 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 13
+[22-Sep-2015 10:15:09 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 12
+[22-Sep-2015 10:15:10 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 12
+[22-Sep-2015 10:15:11 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 12
+[22-Sep-2015 10:15:12 Asia/Jakarta] PHP Fatal error:  Cannot redeclare PDF::__construct() in /home/intn2489/public_html/application/views/kuncoroless/exportpdf_kuncoro.php on line 12
+[22-Sep-2015 10:48:58 Asia/Jakarta] PHP Fatal error:  Call to a member function insertAccesoriesChoosed() on a non-object in /home/intn2489/public_html/application/controllers/frontpage.php on line 1021
+[22-Sep-2015 10:49:08 Asia/Jakarta] PHP Fatal error:  Call to a member function insertAccesoriesChoosed() on a non-object in /home/intn2489/public_html/application/controllers/frontpage.php on line 1021
+[22-Sep-2015 10:49:22 Asia/Jakarta] PHP Fatal error:  Call to a member function insertAccesoriesChoosed() on a non-object in /home/intn2489/public_html/application/controllers/frontpage.php on line 1021
+[22-Sep-2015 10:50:16 Asia/Jakarta] PHP Fatal error:  Call to a member function insertAccesoriesChoosed() on a non-object in /home/intn2489/public_html/application/controllers/frontpage.php on line 1021
+[22-Sep-2015 11:21:32 Asia/Jakarta] PHP Fatal error:  Cannot redeclare Unit_model::getAccessoriesChoosed() in /home/intn2489/public_html/application/models/unit_model.php on line 1134
+[22-Sep-2015 11:38:50 Asia/Jakarta] PHP Parse error:  syntax error, unexpected T_PUBLIC in /home/intn2489/public_html/application/controllers/frontpage.php on line 1057
+[22-Sep-2015 11:39:17 Asia/Jakarta] PHP Parse error:  syntax error, unexpected T_PUBLIC in /home/intn2489/public_html/application/controllers/frontpage.php on line 1058
+[22-Sep-2015 11:39:24 Asia/Jakarta] PHP Fatal error:  Call to a member function insertAccesoriesChoosed() on a non-object in /home/intn2489/public_html/application/controllers/frontpage.php on line 1017
+[22-Jan-2016 18:38:28 Asia/Jakarta] PHP Fatal error:  Call to undefined function WriteHTML() in /home/intn2489/public_html/application/views/vquotations/vquotationspdf.php on line 54
+[22-Jan-2016 19:18:31 Asia/Jakarta] PHP Fatal error:  Call to a member function Output() on a non-object in /home/intn2489/public_html/application/views/vquotations/vquotationspdf.php on line 58
+[23-Jan-2016 14:05:14 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'PHPExcel_Exception' with message 'Invalid cell coordinate A' in /home/intn2489/public_html/application/libraries/PHPExcel/Cell.php:558
+Stack trace:
+#0 /home/intn2489/public_html/application/libraries/PHPExcel/Cell.php(693): PHPExcel_Cell::coordinateFromString('A')
+#1 /home/intn2489/public_html/application/libraries/PHPExcel/Worksheet.php(2433): PHPExcel_Cell::rangeBoundaries('A:A')
+#2 /home/intn2489/public_html/application/controllers/conleads.php(399): PHPExcel_Worksheet->rangeToArray('A:A', NULL, true, false)
+#3 [internal function]: Conleads->import()
+#4 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#5 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#6 {main}
+  thrown in /home/intn2489/public_html/application/libraries/PHPExcel/Cell.php on line 558
+[23-Jan-2016 14:05:46 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'PHPExcel_Exception' with message 'Invalid cell coordinate A' in /home/intn2489/public_html/application/libraries/PHPExcel/Cell.php:558
+Stack trace:
+#0 /home/intn2489/public_html/application/libraries/PHPExcel/Cell.php(694): PHPExcel_Cell::coordinateFromString('A')
+#1 /home/intn2489/public_html/application/libraries/PHPExcel/Worksheet.php(2433): PHPExcel_Cell::rangeBoundaries('A2:A')
+#2 /home/intn2489/public_html/application/controllers/conleads.php(399): PHPExcel_Worksheet->rangeToArray('A2:A', NULL, true, false)
+#3 [internal function]: Conleads->import()
+#4 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#5 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#6 {main}
+  thrown in /home/intn2489/public_html/application/libraries/PHPExcel/Cell.php on line 558
+[23-Jan-2016 14:18:29 Asia/Jakarta] PHP Parse error:  syntax error, unexpected $end in /home/intn2489/public_html/application/controllers/conleads.php on line 294
+[23-Jan-2016 14:19:04 Asia/Jakarta] PHP Fatal error:  Uncaught exception 'PHPExcel_Exception' with message 'Your requested sheet index: 1 is out of bounds. The actual number of sheets is 1.' in /home/intn2489/public_html/application/libraries/PHPExcel.php:577
+Stack trace:
+#0 /home/intn2489/public_html/application/controllers/conleads.php(395): PHPExcel->getSheet(1)
+#1 [internal function]: Conleads->import()
+#2 /home/intn2489/public_html/system/core/CodeIgniter.php(359): call_user_func_array(Array, Array)
+#3 /home/intn2489/public_html/index.php(202): require_once('/home/intn2489/...')
+#4 {main}
+  thrown in /home/intn2489/public_html/application/libraries/PHPExcel.php on line 577
+[23-Jan-2016 14:29:17 Asia/Jakarta] PHP Fatal error:  Cannot redeclare class IOFactory in /home/intn2489/public_html/application/libraries/PHPExcel/IOFactory.php on line 46
+[23-Jan-2016 17:39:22 Asia/Jakarta] PHP Fatal error:  Cannot redeclare class IOFactory in /home/intn2489/public_html/application/libraries/PHPExcel/IOFactory.php on line 46
+[04-Feb-2016 17:00:40 Asia/Jakarta] PHP Fatal error:  Call to undefined method Model_prospectalls::viewdetail() in /home/intn2489/public_html/application/controllers/converylikely.php on line 36
+[05-Feb-2016 09:28:28 Asia/Jakarta] PHP Fatal error:  Call to undefined method Model_prospectalls::viewdetail() in /home/intn2489/public_html/application/controllers/converylikely.php on line 36
+[05-Feb-2016 11:23:48 Asia/Jakarta] PHP Fatal error:  Call to undefined method Model_prospectalls::viewdetail() in /home/intn2489/public_html/application/controllers/converylikely.php on line 36
+[07-Feb-2016 18:21:44 Asia/Jakarta] PHP Fatal error:  Call to a member function FPDF() on a non-object in /home/intn2489/public_html/application/views/vquotations/vquotationspdf.php on line 5
+[07-Feb-2016 18:30:56 Asia/Jakarta] PHP Fatal error:  Call to a member function FPDF() on a non-object in /home/intn2489/public_html/application/views/vquotations/vquotationspdf.php on line 6
+[12-Feb-2016 14:24:51 Asia/Jakarta] PHP Fatal error:  Cannot use object of type stdClass as array in /home/intn2489/public_html/application/views/vquotations/vquotationsform.php on line 232
+[12-Feb-2016 14:27:50 Asia/Jakarta] PHP Fatal error:  Cannot use object of type stdClass as array in /home/intn2489/public_html/application/views/vquotations/vquotationsform.php on line 236
+[12-Feb-2016 14:45:35 Asia/Jakarta] PHP Parse error:  syntax error, unexpected $end in /home/intn2489/public_html/application/controllers/conquotations.php on line 73
+[12-Feb-2016 19:14:02 Asia/Jakarta] PHP Fatal error:  Call to undefined method PDF::BasicTable() in /home/intn2489/public_html/application/views/vquotations/vquotationspdf.php on line 46
+[12-Feb-2016 19:16:20 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_Loader::Cell() in /home/intn2489/public_html/application/views/vquotations/vquotationspdf.php on line 48
+[13-Feb-2016 12:21:36 Asia/Jakarta] PHP Fatal error:  Call to undefined function WriteHTML() in /home/intn2489/public_html/application/views/vquotations/vquotationspdf.php on line 52
+[13-Feb-2016 16:58:53 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/intn2489/public_html/application/controllers/welcome.php on line 22
+[13-Feb-2016 16:59:36 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/intn2489/public_html/application/controllers/welcome.php on line 22
+[13-Feb-2016 17:00:47 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/intn2489/public_html/application/controllers/welcome.php on line 22
+[13-Feb-2016 17:01:45 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '[' in /home/intn2489/public_html/application/controllers/welcome.php on line 22
+[15-Feb-2016 13:30:24 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '.' in /home/intn2489/public_html/application/controllers/conquotations.php on line 175
+[15-Feb-2016 13:33:15 Asia/Jakarta] PHP Parse error:  syntax error, unexpected '.' in /home/intn2489/public_html/application/controllers/conquotations.php on line 175
+[15-Feb-2016 17:00:16 Asia/Jakarta] PHP Fatal error:  Call to undefined method Model_leads::openbidding() in /home/intn2489/public_html/application/controllers/conleads.php on line 45
+[15-Feb-2016 17:54:29 Asia/Jakarta] PHP Fatal error:  Cannot use object of type stdClass as array in /home/intn2489/public_html/application/views/vleads/vleadsopenbidding.php on line 35
+[15-Feb-2016 17:55:03 Asia/Jakarta] PHP Fatal error:  Cannot use object of type stdClass as array in /home/intn2489/public_html/application/views/vleads/vleadsopenbidding.php on line 35
+[15-Feb-2016 19:06:09 Asia/Jakarta] PHP Fatal error:  Cannot use object of type stdClass as array in /home/intn2489/public_html/application/views/vleads/vleadsopenbidding.php on line 34
+[15-Feb-2016 19:06:16 Asia/Jakarta] PHP Fatal error:  Cannot use object of type stdClass as array in /home/intn2489/public_html/application/views/vleads/vleadsopenbidding.php on line 34
+[18-Feb-2016 16:24:56 Asia/Jakarta] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::post() in /home/intn2489/public_html/application/controllers/condiscounts.php on line 51
