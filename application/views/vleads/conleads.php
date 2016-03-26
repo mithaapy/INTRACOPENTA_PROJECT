@@ -42,10 +42,44 @@ class Conleads extends CI_Controller {
 //        $data['data_companies'] = $this->model_companies->viewall();
 //        $data['data_branches'] = $this->model_branches->viewall();
 //        $data['data_customers'] = $this->model_customers->viewall();
-       
-        $sql = "SELECT * FROM tdat_leads INNER JOIN tdat_leaddetails ON tdat_leads.id=tdat_leaddetails.idlead WHERE  tdat_leaddetails.idstatus=1";
+      
+                       
+           $sql="     SELECT  a.id AS leads_id,
+                        a.idsource AS leads_idsource,
+			a.projectno AS leads_projectno,
+                        a.createddate AS leads_createddate,
+                        a.createdby AS leads_createdby,
+                        a.idstage AS leads_idstage,
+                        a.idcompany AS leads_idcompany,
+                        a.idbranch AS leads_idbranch,
+                        a.projectname AS leads_projectname,
+                        a.projectdescription AS leads_projectdescription,
+                        a.projectstatus AS leads_projectstatus,
+                        a.constdate AS leads_constdate,
+                        a.constenddate AS leads_constenddate,
+                        a.projectprovince AS leads_projectprovince,
+                        a.projecttown AS leads_projecttown,
+                        a.projectaddress AS leads_projectaddress,
+                        a.projectcategory AS leads_projectcategory,
+                        a.projectstage AS leads_projectstage,
+                        a.architechdesigner AS leads_architechdesigner,
+                        a.projectpublishdate AS leads_projectpublishdate,
+                        a.devpropmanager AS leads_devpropmanager,
+                        a.engineerconsultant AS leads_engineerconsultant,
+                        a.maincontractor AS leads_maincontractor,
+                        a.subcontractor AS leads_subcontractor,
+                        a.projectvalue AS leads_projectvalue,
+                        a.addressablevalue AS leads_addressablevalue,
+                        a.quality AS leads_quality,
+                        a.assigntype AS leads_assigntype,
+                       b.idstatus AS status
+                FROM tdat_leads a
+                INNER JOIN tdat_leaddetails b ON a.id = b.idlead
+                WHERE b.idstatus = 1" ;
         $query = $this->db->query($sql);
-        $data['bidding']=$query->result_array();
+        $data['leaddetails']=$query->result();
+        //print_r($data);
+       // die();
         $content = $this->load->view('vleads/vleadsopenbidding', $data, TRUE);
         $this->temp->load($setting, $content);
     }
@@ -157,6 +191,41 @@ class Conleads extends CI_Controller {
         redirect(base_url() . 'index.php/conleads/');
     }
 
+    public function pick() {
+        $createdby=$_POST['createdby'];
+        $email=$_POST['email'];
+        $name=$_POST['name'];
+        
+        echo $createdby;
+        echo $email;
+        echo $name;
+        
+//        $this -> db -> select('*');
+//        $this -> db -> from('tdat_users');
+//        $this -> db -> where('id', $createdby);
+//        //$this -> db -> where('createdby',$createdby);
+//        $query = $this->db->get();
+//        $data = $query->result_array();
+//        print_r($data);
+        
+//        $this->load->library('email');
+//        $this->email->from($data['email']);
+//        $this->email->to('subha@okwebsolution.com');
+//        $this->email->cc('');
+//        $this->email->bcc('them@their-example.com');
+//
+//        $this->email->subject('Email Test '.$data['email']);
+//        $this->email->message('Testing the email class.');
+//
+//        $this->email->send();
+
+        if($createdby==NULL):
+            echo 0;
+        else:
+            echo 1;
+        endif;
+    }
+    
     public function edit() {
         $post = $this->input->post();
         $data_save = array(
