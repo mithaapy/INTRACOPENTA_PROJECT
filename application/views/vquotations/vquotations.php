@@ -37,7 +37,7 @@
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->users_nik . ' - ' . $row->users_firstname . ' ' . $row->users_lastname ?></td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <a class='btn btn-warning btn-sm' href='<?php echo base_url() ?>index.php/conquotations/exportpdf/<?php echo $row->prospects_id ?>' title="Download"><i class='fa fa-print'></i></a>
-                                        <a class='btn btn-default btn-sm' href='javascript:;' onclick="action_form('edit', '<?php echo $row->quotations_id ?>')" title="Edit"><i class='fa fa-edit'></i></a>
+                                        <a class='btn btn-default btn-sm' href='javascript:;' onclick="edit_form('edit', '<?php echo $row->quotations_id ?>')" title="Edit"><i class='fa fa-edit'></i></a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -50,7 +50,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    function action_form(type, id) {
+    function edit_form(type, id) {
         $('.alert-notif').slideUp();
         $.ajax({
             url: '<?php echo base_url() ?>index.php/conquotations/get_form',
