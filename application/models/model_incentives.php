@@ -35,12 +35,13 @@ class Model_incentives extends CI_Model {
         return $query->result();
     }
 
-    public function viewdetail($id = '') {
+    public function viewdetail($idincentive) {
         $sql = "SELECT 	a.id AS incentives_id,
 						a.idlead AS incentives_idlead,
 						a.iduser AS incentives_iduser,
 						a.value AS incentives_value,
 						a.currency AS incentives_currency,
+                                                a.idprospect AS incentives_idprospect,
 						b.id AS leads_id,
                         b.idsource AS leads_idsource,
 						b.projectno AS leads_projectno,
@@ -58,12 +59,9 @@ class Model_incentives extends CI_Model {
 				FROM tdat_incentives a
 				LEFT JOIN tdat_leads b ON a.idlead = b.id
 				LEFT JOIN tdat_users c ON b.createdby = c.id
-				WHERE a.id = " . $id . " 
-				ORDER BY id ASC";
+				WHERE a.id = $idincentive" ;
         $query = $this->db->query($sql);
         return $query->result();
     }
 
 }
-
-?>
