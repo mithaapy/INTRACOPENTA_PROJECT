@@ -1,4 +1,5 @@
 <?php $dataprivileges = $this->privileges->main($this->session->userdata['users_idrole']); 
+ 
 $role= $this->session->userdata['users_idrole']; 
 ?>
 <?php $data = $data_quotations[0]; ?>
@@ -73,6 +74,14 @@ $role= $this->session->userdata['users_idrole'];
         <button style="width:100%; <?php echo $stylesubmitld ?>;" type="submit" id="submit" name="submit" class="btn btn-primary"><i class="glyphicon glyphicon-check"></i> Submit</button>
     </div>
 </form>
+<?php 
+$s_id=$salesData[0]->id;
+ $sFname=$salesData[0]->firstname;
+        $sLname=$salesData[0]->	lastname;
+        $sMobile=$salesData[0]->mobile;
+        $sEmail=$salesData[0]->email;
+        $s_branch=$salesData[0]->idbranch
+?>
 <script>
     $(document).ready(function () {
        $("#check").click(function () {
@@ -123,5 +132,41 @@ $role= $this->session->userdata['users_idrole'];
                                     });
                                 }
                             }); 
+                            
+         //send email when "Ask Manager" button clicked
+         $("#reset").click(function(){
+          var discountprice = $("#discountprice").val();
+             var form_data = {
+                                   
+                                    discount_price: discountprice,
+                                    total_price: <?php echo $disRes[0]->total_price; ?>,
+                                    prospect_id:<?php echo $data->prospects_id; ?>,
+                                    project_name:'<?php echo $data->products_name; ?>',
+                                    quotation_id:'<?php echo $data->prospects_quotationno; ?>',
+                                   // s_id: <?php echo $s_id; ?>,
+                                    s_fname:'<?php echo $sFname; ?>',
+                                    s_lname:'<?php echo $sLname; ?>',
+                                    s_email:'<?php echo $sEmail; ?>',
+                                    s_phone:'<?php echo $sMobile; ?>',
+                                    s_branch:'<?php echo $s_branch; ?>',
+                                    
+                                }; 
+                               $.ajax({
+                                        url: "<?php echo base_url('index.php/condiscounts/askmanager'); ?>",
+                                        type: 'POST',
+                                        data: form_data,
+                                        
+                                        success: function (data) {
+                                            alert(data);
+//                                            if(data==1){
+//                                                alert("Your query has been sent to Manager !");
+//                                                $("#submitdiv").hide();
+//                                                $("#resetdiv").hide();
+//                                            }
+                                           
+                                        }
+                                    });  
+                        
+         });
     });
 </script>
