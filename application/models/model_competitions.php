@@ -105,8 +105,20 @@ class Model_competitions extends CI_Model {
     }
 
     public function edit($data) {
+        $update_comp=array(
+            'idprospect'=>$data['idprospect'],
+            'competee1'=>$data['competee1'],
+            'competee2'=>$data['competee2'],
+            'competee3'=>$data['competee3'],
+            'competee4'=>$data['competee4'],
+            'probability'=>$data['probability'],
+            'competeewin'=>$data['competeewin'],
+            'lossnotes'=>$data['lossnotes'],
+           
+            
+        );
         $this->db->where('id', $data['id']);
-        $query = $this->db->update('tdat_competitions', $data);
+        $query = $this->db->update('tdat_competitions', $update_comp);
         if ($query):
             return TRUE;
         else:
