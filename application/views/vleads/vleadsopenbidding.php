@@ -33,13 +33,32 @@
                                 <tr>
                                     <td style="text-align: center; vertical-align: middle;"><?php echo $no = $no + 1 ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_projectno ?></td>
-                                    <td style="text-align: left; vertical-align: middle;"><?php echo $row->sources_code . ' - ' . $row->sources_name ?></td>
+<!--                                    <td style="text-align: left; vertical-align: middle;"><?php echo $row->sources_code . ' - ' . $row->sources_name ?></td>-->
+                                     <?php 
+                                    $this->db->select('code,name');
+                                    $this->db->from('tdat_sources');
+                                    $this->db->where('id',$row->leads_idsource);
+                                    $qs=$this->db->get();
+                                    $sourceres=$qs->result();
+                                   // print_r($sourceres); die;
+                                    ?>
+                                    <td style="text-align: left; vertical-align: middle;"><?php echo $sourceres[0]->code . ' - ' . $sourceres[0]->name ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_projectname ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_constdate . ' / ' . $row->leads_constenddate ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_projectprovince . ' / ' . $row->leads_projecttown ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_projectstage . ' / ' . $row->leads_projectstatus ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_projectpublishdate ?></td>
-                                    <td style="text-align: left; vertical-align: middle;"><?php echo $row->stages_code . ' - ' . $row->stages_name ?></td>
+<!--                                    <td style="text-align: left; vertical-align: middle;"><?php echo $row->stages_code . ' - ' . $row->stages_name ?></td>-->
+                                    <?php 
+                                    $this->db->select('code,name');
+                                    $this->db->from('tdat_stages');
+                                    $this->db->where('id',$row->leads_idstage);
+                                    $qs1=$this->db->get();
+                                    $sourceres1=$qs1->result();
+                                   // print_r($sourceres); die;
+                                    ?>
+                                    
+                                    <td style="text-align: left; vertical-align: middle;"><?php echo $sourceres1[0]->code . ' - ' . $sourceres1[0]->name ?></td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <a class='btn btn-primary btn-sm' href='javascript:;' onclick="action_form('detail', '<?php echo $row->leads_id ?>')" title="Detail"><i class='fa fa-search'></i></a>
                                         <a class='btn btn-default btn-sm' href='javascript:;' onclick="action_form('edit', '<?php echo $row->leads_id ?>')" title="Edit"><i class='fa fa-edit'></i></a>
