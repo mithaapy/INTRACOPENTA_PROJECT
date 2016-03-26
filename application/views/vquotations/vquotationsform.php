@@ -294,7 +294,11 @@
                         '<input type="hidden" name="accessories[]" value="'+selectedAVal+'">'
                         +selectedA+
             '</td>' +
-          
+          '<td style="text-align: left; vertical-align: middle;"><input type="text" name="accquantity[]" required></td>'+
+          '<td style="text-align: left; vertical-align: middle;">'+
+    '<input type="checkbox" name="is_display_pdf[]" value="Y" checked="checked">Yes'+
+    '<input type="checkbox" name="is_display_pdf[]" value="N" >No'+
+    '</td>'+
             '<td class="action-edit-delete">'+
                             '<a href="#" title=""><i class="fa fa-edit"></i></a>'+
                             '<a href="#" title=""><i class="fa fa-trash"></i></a>'+
@@ -326,6 +330,8 @@
             <thead>
                 <tr>
                     <th style="text-align: center; vertical-align: middle;">Accessories</th>
+                    <th style="text-align: center; vertical-align: middle;">Quantity</th>
+                    <th style="text-align: center; vertical-align: middle;">Display the price</th>
                     <th style="text-align: center; vertical-align: middle;  width: 120px;"></a>Action</th>
                 </tr>
             </thead>
@@ -346,7 +352,18 @@
                         <input type="hidden" name="accessories[]" value="<?php echo $acces['id']; ?>">
                         <?php echo $acces['name']; ?>
             </td>
-            
+            <td style="text-align: left; vertical-align: middle;"><input type="text" name="accquantity[]" value="<?php echo $accessory['accquantity'] ?>" required></td>
+            <?php if($accessory['is_display_pdf']=="Y"): ?>
+            <td style="text-align: left; vertical-align: middle;">
+                <input type="checkbox" name="is_display_pdf[]" checked="checked" value="Y">Yes
+                <input type="checkbox" name="is_display_pdf[]" value="N">No
+            </td>
+            <?php else: ?>
+            <td style="text-align: left; vertical-align: middle;">
+                <input type="checkbox" name="is_display_pdf[]"  value="Y">Yes
+                <input type="checkbox" name="is_display_pdf[]" checked="checked" value="N">No
+            </td>
+          <?php endif; ?>
             <td class="action-edit-delete">
                 <a href="<?php echo base_url('index.php/conaccessories') ?>" title=""><i class="fa fa-edit"></i></a>
                             <a href="javascript:void(0)" onclick="action_del('delete', '<?php echo $accessory['id'] ?>')"  ><i class="fa fa-trash"></i></a>
@@ -378,7 +395,105 @@
         </table>
     </div>
     <hr/><br/>
+<!--  Promotion div Start -->
 
+<h3 class='ekunfontslide'> Promotions </h3>
+    <script>
+        $(document).ready(function(){
+            $("#addpromotionsbtn").click(function(){
+                var selectedP=$("#idpromotions option:selected").text();
+                var selectedPVal=$("#idpromotions").val();
+                var html='<tr id="rowaccessories" >'+
+                        '<td style="text-align: left; vertical-align: middle;">'+
+                        '<input type="hidden" name="promotions[]" value="'+selectedPVal+'">'
+                        +selectedP+
+            '</td>' +
+          
+            '<td class="action-edit-delete">'+
+                            '<a href="#" title=""><i class="fa fa-edit"></i></a>'+
+                            '<a href="#" title=""><i class="fa fa-trash"></i></a>'+
+                        '</td>'+
+            '</tr>'
+            ;
+                $("#ptbody").append(html);
+                
+            });
+        });
+        </script>
+    <div class="col-md-12" style="padding-left:0; margin-bottom:15px; overflow:hidden;">  
+     <div class="col-md-9" style="padding-left:0; padding-right:0;">   
+      <select class="form-control" id="idpromotions" name="idpromotions">
+                                
+                                <?php foreach ($data_promotions as $row): ?>
+                                    <option value="<?php echo $row->id; ?>"><?php echo $row->name; ?></option>
+    <?php endforeach; ?>
+                            </select>
+   </div>
+    <div class="col-sm-3" style="padding-right:0;"> 
+    <button  type="button" id="addpromotionsbtn" name="addpromotions" class="btn btn-default quotation_note"><i class="fa fa-list"></i> Add Promotions</button>
+   </div>
+  </div>      
+    <div class='table-responsive'>
+       
+        <table class='table table-bordered table-striped table-condensed datatablesdetails'>
+           
+            <thead>
+                <tr>
+                    <th style="text-align: center; vertical-align: middle;">Promotions</th>
+                    <th style="text-align: center; vertical-align: middle;  width: 120px;"></a>Action</th>
+                </tr>
+            </thead>
+            <tbody id="ptbody">
+                <!-- Accessories added dynamically -->
+               <?php if(isset($promotions)):
+                      foreach ($promotions as $promotion):
+                     $this->db->select('*');
+            $this->db->from('tdat_productpromotions');
+            $this->db->where('id',$promotion['idpromotion']);
+            $querypt=  $this->db->get();
+            $promos=  $querypt->result_array();
+            foreach ($promos as $promo):
+               //echo $qut['name'];
+                ?>
+               <tr id="rowaccessories" class="<?php echo $promotion['id'] ?>">
+                        <td style="text-align: left; vertical-align: middle;">
+                        <input type="hidden" name="promotions[]" value="<?php echo $promo['id']; ?>">
+                        <?php echo $promo['name']; ?>
+            </td>
+            
+            <td class="action-edit-delete">
+                <a href="<?php echo base_url('index.php/conproductpromotions') ?>" title=""><i class="fa fa-edit"></i></a>
+                            <a href="javascript:void(0)" onclick="promo_del('delete', '<?php echo $promotion['id'] ?>')"  ><i class="fa fa-trash"></i></a>
+                        </td>
+            </tr>
+               <?php 
+               endforeach;
+              endforeach;
+               endif;
+               ?>
+           <script type="text/javascript">
+    function promo_del(type, id) {
+        
+        $.ajax({
+            url: '<?php echo base_url() ?>index.php/conquotations/pdelete',
+            type: 'POST',
+            data: {tipe: type, id: id},
+            dataType: 'html',
+            
+            success: function (data) {
+               alert("Deleted Successfully");
+                $('.'+id).remove();
+            }
+        });
+    }
+
+</script>    
+            
+            </tbody>
+        </table>
+    </div>
+    <hr/><br/>
+<!-- Promotion End Here -->
 
     <div class="col-md-6"></div>
     <div class="col-md-2">
