@@ -1,4 +1,10 @@
 <?php $dataprivileges = $this->privileges->main($this->session->userdata['users_idrole']); ?>
+<?php $email = $this->session->userdata['users_email'];
+$f_name = $this->session->userdata['users_firstname'];
+
+$l_name = $this->session->userdata['users_lastname'];
+$mobile = $this->session->userdata['users_mobile'];
+?>
 <?php $data = $data_leads[0]; ?>
 <br/>
 <form enctype="multipart/form-data" class="form-horizontal" action="<?php echo base_url() . 'index.php/conleads/' . $function; ?>" method="POST" >
@@ -269,16 +275,41 @@
     <div class="col-md-2">
         <button style="width:100%" type="button" id="cancel" name="cancel" class="btn btn-default" onclick="back()"><i class="fa fa-arrow-circle-left"></i> Cancel</button>
     </div>
+<!--    <div class="col-md-2">
+        <button style="width:100%" type="button" id="pick" name="pick" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Pick</button>
+    </div>-->
     <div class="col-md-2">
         <button style="width:100%; <?php echo $styleresetld ?>;" type="reset" id="reset" name="reset" class="btn btn-default"><i class="fa fa-refresh"></i> Clear</button>
     </div>
+<input type="hidden" name="createdby" value="<?php echo $data->leads_createdby; ?>">
+<input type="hidden" name="email" value="<?php echo $email; ?>">
+<input type="hidden" name="mobile" value="<?php echo $mobile; ?>">
+<input type="hidden" name="name" value="<?php echo $f_name.' '.$lname ?>">
     <div class="col-md-2">
         <button style="width:100%; <?php echo $stylesubmitld ?>;" type="submit" id="submit" name="submit" class="btn btn-primary"><i class="glyphicon glyphicon-check"></i> Submit</button>
     </div>
 </form>
+
 <script type="text/javascript">
     // When the document is ready
-    $(document).ready(function () {
+    $(document).ready(function () { 
+        
+//        $("#pick").click(function () {
+//            var form_data = {
+//                createdby: <?php //echo $data->leads_createdby; ?>,
+//                email:'<?php //echo $email; ?>',
+//                name: '<?php //echo $f_name.' '.$lname ?>'
+//            };
+//            $.ajax({
+//                url: "<?php //echo base_url('index.php/conleads/pick'); ?>",
+//                type: 'POST',
+//                data: form_data,                        
+//                success: function (data) {
+//                    alert(data);
+//                }
+//            });
+//        });
+        
         $('#projectpublishdate').datepicker({
             format: "yyyy-mm-dd",
             todayBtn: "linked",
