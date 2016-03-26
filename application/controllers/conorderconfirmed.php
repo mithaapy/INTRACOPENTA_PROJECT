@@ -42,6 +42,8 @@ class Conorderconfirmed extends CI_Controller {
 	
 	public function edit() {
         $post = $this->input->post();
+        
+        //print_r($post); die;
 		$query1 = TRUE; $query2 = TRUE; $query3 = TRUE; $query4 = TRUE; $query5 = TRUE;
 		
 		//if (!empty($post['confirmdate']) && !empty($post['incentiveno']) ):
@@ -74,13 +76,48 @@ class Conorderconfirmed extends CI_Controller {
 				'incentiveno' => $post['incentiveno']
             );
             $query4 = $this->model_prospectalls->edit($data_save4);	
-
-			/*$data_save5 = array(
-                'idlead' => $post['idlead'],
-				'iduser' => $post['iduser']
+                 
+             $idprospect=$post['idprospect'];
+                   $iduser=$post['iduser'];
+                   //getting lead id
+                   $leadsql="SELECT a.idlead AS inc_leadid 
+                                    FROM tdat_suspects as a 
+                                    INNER JOIN tdat_prospects as b
+                                    ON a.id=b.idsuspect
+                                     WHERE b.id=$idprospect";
+                   $ressql=  $this->db->query($leadsql);
+                   $leadres=$ressql->result();
+                   $idlead=$leadres[0]->inc_leadid;
+//                   getting currency
+                   $sqlcur = "SELECT	
+                        c.currency AS productprices_currency
+                FROM tdat_prospects a	
+                LEFT JOIN tdat_products b ON a.idproduct = b.id
+                LEFT JOIN tdat_productprices c ON b.id = c.idproduct
+                WHERE a.id = " . $idprospect . "
+                ORDER BY a.id ASC";
+        $querycur = $this->db->query($sqlcur);
+          $currencyres=$querycur->result();
+          $currency=$currencyres[0]->productprices_currency;
+                   //getting value
+                   $this->db->select('total_price,discount_price');
+                   $this->db->from('tdat_discounts');
+                   $this->db->where('prospect_id',$idprospect);
+                   $queryvalue=  $this->db->get();
+                   $valueres=$queryvalue->result();
+                   $value=($valueres[0]->discount_price)?$valueres[0]->discount_price:$valueres[0]->total_price;
+                  
+            
+            
+			$data_save5 = array(
+                'idlead' => $idlead,
+                'iduser' => $iduser,
+                'value'=>$value,
+                 'currency'=>$currency,
+                   'idprospect'=>$idprospect        
             );
-            $query5 = $this->model_incentives->insert($data_save5);
-			*/
+            $query5 = $this->db->insert('tdat_incentives',$data_save5);
+			
 		//endif;
 	
         if ($query1 != FALSE || $query2 != FALSE || $query3 != FALSE || $query4 != FALSE || $query5 != FALSE):
