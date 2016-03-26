@@ -380,6 +380,8 @@ class Model_prospects extends CI_Model {
 				LEFT JOIN tdat_competitions s ON a.id = s.idprospect
 				WHERE a.idstage = 8
                 ORDER BY a.id DESC";
+                 $query = $this->db->query($sql);
+        return $query->result();
 	}
 
     public function insert($data) {
