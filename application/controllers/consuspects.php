@@ -135,7 +135,22 @@ class Consuspects extends CI_Controller {
                          *aaa/bbb/ccc-ddd/eee-fff
                          *  aaa :quotation number (automatically generated, according to each company)
                          */
-                        $qno=$post['idcompany'].'CC';
+                        $this->db->select('id');
+                        $this->db->from('tdat_prospects');
+                        $this->db->where('idcompany',$post['idcompany']);
+                        $qc=  $this->db->get();
+                        $countr=$qc->num_rows();
+                        $qno=$countr+1;
+                        $len=strlen($qno);
+                        if($len=1):
+                          $qno='00'.$qno;  
+                        
+                        elseif($len=2):
+                          $qno='0'.$qno;  
+                        else:
+                          $qno=$qno;  
+                        endif;
+                        //$qno=$post['idcompany'].'CC';
                     /*
                      * bbb: Company code
                      */
