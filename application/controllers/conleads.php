@@ -34,17 +34,10 @@ class Conleads extends CI_Controller {
         $content = $this->load->view('vleads/vleads', $data, TRUE);
         $this->temp->load($setting, $content);
     }
-
-    public function openbidding() {
-        $setting['set_menu'] = array('menu2' => 'active');
-        $setting['inc_file'] = array('page' => 'form_datatables', 'header_title' => 'Open Bidding');
-//        $data['data_sources'] = $this->model_sources->viewall();
-//        $data['data_companies'] = $this->model_companies->viewall();
-//        $data['data_branches'] = $this->model_branches->viewall();
-//        $data['data_customers'] = $this->model_customers->viewall();
-      
-                       
-           $sql="     SELECT  a.id AS leads_id,
+public function disqualifiedleads(){
+    $setting['set_menu'] = array('menu3' => 'active', 'submenu30' => 'active');
+        $setting['inc_file'] = array('page' => 'form_datatables', 'header_title' => 'Disqualified Leads');
+          $sql = "     SELECT  a.id AS leads_id,
                         a.idsource AS leads_idsource,
 			a.projectno AS leads_projectno,
                         a.createddate AS leads_createddate,
@@ -75,11 +68,59 @@ class Conleads extends CI_Controller {
                        b.idstatus AS status
                 FROM tdat_leads a
                 INNER JOIN tdat_leaddetails b ON a.id = b.idlead
-                WHERE b.idstatus = 1" ;
+                WHERE b.idstatus = 4";
         $query = $this->db->query($sql);
-        $data['leaddetails']=$query->result();
+        $data['leaddetails'] = $query->result();
         //print_r($data);
-       // die();
+        // die();
+        $content = $this->load->view('vleads/vleadsdisqualified', $data, TRUE);
+        $this->temp->load($setting, $content);
+}
+    public function openbidding() {
+        $setting['set_menu'] = array('menu2' => 'active');
+        $setting['inc_file'] = array('page' => 'form_datatables', 'header_title' => 'Open Bidding');
+//        $data['data_sources'] = $this->model_sources->viewall();
+//        $data['data_companies'] = $this->model_companies->viewall();
+//        $data['data_branches'] = $this->model_branches->viewall();
+//        $data['data_customers'] = $this->model_customers->viewall();
+
+
+        $sql = "     SELECT  a.id AS leads_id,
+                        a.idsource AS leads_idsource,
+			a.projectno AS leads_projectno,
+                        a.createddate AS leads_createddate,
+                        a.createdby AS leads_createdby,
+                        a.idstage AS leads_idstage,
+                        a.idcompany AS leads_idcompany,
+                        a.idbranch AS leads_idbranch,
+                        a.projectname AS leads_projectname,
+                        a.projectdescription AS leads_projectdescription,
+                        a.projectstatus AS leads_projectstatus,
+                        a.constdate AS leads_constdate,
+                        a.constenddate AS leads_constenddate,
+                        a.projectprovince AS leads_projectprovince,
+                        a.projecttown AS leads_projecttown,
+                        a.projectaddress AS leads_projectaddress,
+                        a.projectcategory AS leads_projectcategory,
+                        a.projectstage AS leads_projectstage,
+                        a.architechdesigner AS leads_architechdesigner,
+                        a.projectpublishdate AS leads_projectpublishdate,
+                        a.devpropmanager AS leads_devpropmanager,
+                        a.engineerconsultant AS leads_engineerconsultant,
+                        a.maincontractor AS leads_maincontractor,
+                        a.subcontractor AS leads_subcontractor,
+                        a.projectvalue AS leads_projectvalue,
+                        a.addressablevalue AS leads_addressablevalue,
+                        a.quality AS leads_quality,
+                        a.assigntype AS leads_assigntype,
+                       b.idstatus AS status
+                FROM tdat_leads a
+                INNER JOIN tdat_leaddetails b ON a.id = b.idlead
+                WHERE b.idstatus = 1";
+        $query = $this->db->query($sql);
+        $data['leaddetails'] = $query->result();
+        //print_r($data);
+        // die();
         $content = $this->load->view('vleads/vleadsopenbidding', $data, TRUE);
         $this->temp->load($setting, $content);
     }
@@ -191,8 +232,44 @@ class Conleads extends CI_Controller {
         redirect(base_url() . 'index.php/conleads/');
     }
 
+    public function pick() {
+        $createdby = $_POST['createdby'];
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+
+        echo $createdby;
+        echo $email;
+        echo $name;
+
+        $this->db->select('*');
+        $this->db->from('tdat_users');
+        $this->db->where('id', $createdby);
+        //$this -> db -> where('createdby',$createdby);
+        $query = $this->db->get();
+        $data = $query->result_array();
+        print_r($data);
+
+//        $this->load->library('email');
+//        $this->email->from($data['email']);
+//        $this->email->to('subha@okwebsolution.com');
+//        $this->email->cc('');
+//        $this->email->bcc('them@their-example.com');
+//
+//        $this->email->subject('Email Test '.$data['email']);
+//        $this->email->message('Testing the email class.');
+//
+//        $this->email->send();
+
+        if ($createdby == NULL):
+            echo 0;
+        else:
+            echo 1;
+        endif;
+    }
+
     public function edit() {
         $post = $this->input->post();
+
         $data_save = array(
             'id' => $post['id'],
             'idsource' => $post['idsource'],
@@ -237,12 +314,66 @@ class Conleads extends CI_Controller {
                     $customer = $customer[0]->customers_id;
                 endif;
                 if ($post['action' . $i] != 'delete') :
+
+
                     if (!empty($post['idstatus2' . $i])):
                         if ($post['action' . $i] == '1') :
                             $idstatusld = '1';
                             $pickupdateld = '';
                             $pickupbyld = ''; /* idusers */
                         elseif ($post['action' . $i] == '2') :
+
+                            /*
+                             * Sending mail who when picked up lead to lead owner0
+                             */
+
+                            $createdby = $post['createdby'];
+                            $email = $post['email'];
+                            $name = $post['name'];
+                            $mobile = $post['mobile'];
+
+                            $this->db->select('email');
+                            $this->db->from('tdat_users');
+                            $this->db->where('id', $createdby);
+                            //$this -> db -> where('createdby',$createdby);
+                            $crequery = $this->db->get();
+                            $credata = $crequery->result_array();
+                            foreach ($credata as $cre):
+                                $toemail = $cre['email'];
+
+
+                                $subject = "The Lead  picked up by $name";
+                                $message = "Your lead picked up by $name\n";
+                                $message .= "Email id: " . $email . "\n";
+                                $message .= "Mobile No: " . $mobile . "\n";
+                                $message.="Date: " . date('Y-m-d');
+
+                                $recipient = $toemail;
+
+                                $sender_email = 'info@inta-x-sales.com';
+                                $config['charset'] = 'utf-8';
+
+                                $config['protocol'] = 'smtp';
+
+                                $config['smtp_host'] = 'mail.inta-x-sales.com';
+
+                                $config['smtp_port'] = 25;
+
+                                $config['smtp_user'] = $sender_email;
+
+                                $config['smtp_pass'] = 'infointa123';
+
+                                $this->load->library('email', $config);
+                                $this->email->to($recipient);
+                                $this->email->from($sender_email, 'INTA');
+                                $this->email->subject($subject);
+                                $this->email->message($message);
+                                $this->email->send();
+                            endforeach;
+
+
+
+
                             $idstatusld = '2';
                             $pickupdateld = date('Y-m-d');
                             $pickupbyld = $this->session->userdata['users_id']; /* idusers */
@@ -446,7 +577,7 @@ class Conleads extends CI_Controller {
         }
         $sheet = $objPHPExcel->getSheet(0);
         $highestRow = $sheet->getHighestRow();
-     
+
         $highestColumn = $sheet->getHighestColumn();
         for ($row = 2; $row <= $highestRow; $row++):
             $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row, NULL, TRUE, FALSE);
@@ -480,33 +611,32 @@ class Conleads extends CI_Controller {
             /*
              * checking blank or not projectno
              */
-            if($rowData[0][0]):
+            if ($rowData[0][0]):
                 $this->db->select('projectno');
-        $this->db->from('tdat_leads');
-        $this->db->where('projectno',$rowData[0][0]);
-        
-        $query=  $this->db->get();
-        $count=$query->num_rows();  
-        if($count==1):
-            //update
-            $this->db->where('projectno',$rowData[0][0]);
-            $this->db->update('tdat_leads', $post);
-            $this->session->set_flashdata('err_msg', '<div class="alert alert-success alert-notif" role="alert"><strong>Well Done!</strong> Update data is success.</div>');
-            else:
-            //insert
-            $this->db->insert('tdat_leads', $post);
-        $this->session->set_flashdata('err_msg', '<div class="alert alert-success alert-notif" role="alert"><strong>Well Done!</strong> Insert new data is success.</div>');
-        endif;
+                $this->db->from('tdat_leads');
+                $this->db->where('projectno', $rowData[0][0]);
+
+                $query = $this->db->get();
+                $count = $query->num_rows();
+                if ($count == 1):
+                    //update
+                    $this->db->where('projectno', $rowData[0][0]);
+                    $this->db->update('tdat_leads', $post);
+                    $this->session->set_flashdata('err_msg', '<div class="alert alert-success alert-notif" role="alert"><strong>Well Done!</strong> Update data is success.</div>');
+                else:
+                    //insert
+                    $this->db->insert('tdat_leads', $post);
+                    $this->session->set_flashdata('err_msg', '<div class="alert alert-success alert-notif" role="alert"><strong>Well Done!</strong> Insert new data is success.</div>');
+                endif;
             endif;
 //            if ($this->model_leads->insert($post)):
 //                $this->session->set_flashdata('err_msg', '<div class="alert alert-success alert-notif" role="alert"><strong>Well Done!</strong> Insert new data is success.</div>');
 //            else:
 //                $this->session->set_flashdata('err_msg', '<div class="alert alert-danger alert-notif" role="alert"><strong>Sorry!</strong> Insert new data is failed.</div>');
 //            endif;
-           
+
         endfor;
         redirect(base_url() . 'index.php/conleads/');
-      
     }
 
 }
