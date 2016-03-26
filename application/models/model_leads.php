@@ -59,6 +59,7 @@ class Model_leads extends CI_Model {
 
     public function openbidding() {
         $sql = "SELECT  a.id AS leads_id,
+                        a.id AS createdby,
                         a.idsource AS leads_idsource,
 			a.projectno AS leads_projectno,
                         a.createddate AS leads_createddate,
