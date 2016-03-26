@@ -41,9 +41,10 @@ class Conorderonhand extends CI_Controller {
 
     public function edit() {
         $post = $this->input->post();
+        //print_r($post); die('test');
 		$query1 = TRUE; $query2 = TRUE; $query3 = TRUE; $query4 = TRUE; $query5 = TRUE; $query6 = TRUE; $query7 = TRUE; $query8 = TRUE;
 		
-		if (!empty($post['dpdate']) || !empty($post['leasename']) ):
+		if (!empty($post['bankname']) || !empty($post['leasename']) ):
 			$data_save1 = array(
                 'id' => $post['idprospect'],
                 'idstage' => '5'
@@ -76,7 +77,7 @@ class Conorderonhand extends CI_Controller {
             $query4 = $this->model_prospectalls->edit($data_save4);				
 		endif;
 		
-		if (!empty($post['dpdate']) && !empty($post['leasename']) ):
+		if (!empty($post['bankname']) && !empty($post['leasename']) ):
 			$data_save5 = array(
                 'id' => $post['idprospect'],
                 'idstage' => '6'
