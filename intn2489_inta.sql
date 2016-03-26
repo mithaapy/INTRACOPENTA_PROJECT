@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Feb 27, 2016 at 10:23 AM
+-- Generation Time: Mar 23, 2016 at 09:46 AM
 -- Server version: 5.5.48-cll
 -- PHP Version: 5.4.31
 
@@ -2683,7 +2683,7 @@ CREATE TABLE IF NOT EXISTS `tdat_categories` (
   `idcompany` int(11) NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `tdat_categories`
@@ -2693,7 +2693,10 @@ INSERT INTO `tdat_categories` (`id`, `name`, `brand`, `idcompany`, `description`
 (1, 'Categories 1', 'Brand Categories 1', 1, 'Description Categories 1'),
 (2, 'Categories 2', 'Brand Categories 2', 3, 'Description Categories 2'),
 (3, 'Categories 3', 'Brand Categories 3', 6, 'Description Categories 3'),
-(4, 'Categories 4', 'Brand Categories 4', 5, 'Description Categories 4');
+(4, 'Categories 4', 'Brand Categories 4', 5, 'Description Categories 4'),
+(5, 'ARTICULATE DUMP TRUCK', 'VOLVO CE', 2, 'Articulated Dump Truck '),
+(6, 'EXCAVATOR VCE', 'VOLVO CE', 2, 'Excavator'),
+(7, 'TRUCK', 'SINO TRUK', 3, 'Truck - CNHTC');
 
 -- --------------------------------------------------------
 
@@ -2860,14 +2863,15 @@ CREATE TABLE IF NOT EXISTS `tdat_competitions` (
   `competeewin` int(11) NOT NULL,
   `lossnotes` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `tdat_competitions`
 --
 
 INSERT INTO `tdat_competitions` (`id`, `idprospect`, `competee1`, `competee2`, `competee3`, `competee4`, `probability`, `competeewin`, `lossnotes`) VALUES
-(1, 8, 0, 0, 0, 0, '', 0, 'Customer doesn''t accept the offered price');
+(1, 8, 1, 2, 3, 4, 'Competee 4 can win', 4, 'Customer doesn''t accept the offered price Test'),
+(2, 10, 5, 6, 7, 4, 'Competee 4 can win', 3, 'test loss notes. Please check.');
 
 -- --------------------------------------------------------
 
@@ -2937,7 +2941,7 @@ CREATE TABLE IF NOT EXISTS `tdat_customercp` (
   `hobby` varchar(500) NOT NULL,
   `idcustomer` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `tdat_customercp`
@@ -2949,7 +2953,10 @@ INSERT INTO `tdat_customercp` (`id`, `firstname`, `lastname`, `gender`, `birthda
 (3, 'Customer 2', 'Contact Person 1', 'Male', '2013-06-11', '222222', '333', '556655', 'Customers2@customers.com', 'Contact Person Position2', 'Contact Person Hobby2', 2),
 (4, 'Customer 2', 'Contact Person 2', 'Female', '1988-12-26', '3344443', '444', '34534533', 'Customers2@customers.com', 'Contact Person Position2', 'Contact Person Hobby2', 2),
 (5, 'John', 'Doe', 'Male', '1980-06-11', '800032', '021', '0877627123', 'john@doe.com', 'Sales', 'read', 11),
-(6, 'Jhon', 'Doe', 'Male', '1990-01-30', '8002233', '021', '0817789987', 'jhondoe@test.com', 'Purchasing', '', 14);
+(6, 'Jhon', 'Doe', 'Male', '1990-01-30', '8002233', '021', '0817789987', 'jhondoe@test.com', 'Purchasing', '', 14),
+(7, 'Arinda', 'Wijaya', 'Female', '1980-06-03', '80090090', '021', '0817789987', 'arinda@test.com', 'manager', 'read', 10),
+(8, 'Dipta', 'Satwika', 'Male', '1988-10-26', '8009090', '021', '0812345566', 'dipta@gmail.com', 'marketing', 'read', 17),
+(9, 'Budi', 'Agus', 'Male', '1980-01-01', '401408', '6700', '081213141516', 'budi@cci.co.id', '', '', 7);
 
 -- --------------------------------------------------------
 
@@ -2998,29 +3005,41 @@ CREATE TABLE IF NOT EXISTS `tdat_customers` (
   `email` varchar(100) NOT NULL,
   `locationsite` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `tdat_customers`
 --
 
 INSERT INTO `tdat_customers` (`id`, `name`, `idindustry`, `idsegment`, `idcustomergroup`, `idcustomertype`, `CUST_WID`, `address`, `idcity`, `idcountry`, `postalcode`, `phone`, `fax`, `email`, `locationsite`) VALUES
-(1, 'Customers 1', 3, 3, 3, 2, 112233, 'Address Customers 1', 10, 69, '11111', '11223344', '11223344', 'Customers1@customers.com', 'Customers Locations 1'),
+(1, 'Customers 1', 3, 3, 3, 20, 112233, 'Address Customers 1', 10, 69, '11111', '11223344', '11223344', 'Customers1@customers.com', 'Customers Locations 1'),
 (2, 'Customers 2', 1, 2, 5, 4, 223344, 'Address Customers 2', 21, 69, '112233', '44556677', '99008877', 'Customers2@customers.com', 'Customers Locations 2'),
 (3, 'Pt Aetra', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
 (4, 'Adhi Karya', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
 (5, 'dfghjk', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
 (6, 'Paijo', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
-(7, 'PT. Brantas Abipraya', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(7, 'PT. Brantas Abipraya', 0, 0, 0, 0, 0, 'Jl. Agus no. 123', 12, 69, '', '08129900936', '12345678', 'budi@cci.co.id', ''),
 (8, '', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
 (9, 'example', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
-(10, 'dev test', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(10, 'dev test', 2, 3, 2, 41, 2, 'Jl. Gatot Subroto Jakarta Pusat', 35, 69, '14431', '021390090', '0219009000', 'devtes@gmail.com', 'Jakarta'),
 (11, 'Agung Sedayu Grup', 2, 1, 2, 1, 2, 'Jalan Boulevard kelapa Gading \nJakarta Utara', 38, 69, '14567', '8003311', '7546744', 'agungsedayu@gmail.com', 'jakarta'),
 (12, 'AKUH', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
 (13, 'test', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
 (14, 'Test cus', 2, 2, 2, 1, 2, 'Jl. Gatot Subroto Jakarta Pusat', 35, 69, '14421', '8900982', '8098909', 'testcust@test.com', 'Jakarta'),
 (15, 'PAMA', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
-(16, 'Test Cust', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', '');
+(16, 'Test Cust', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(17, 'bla bla bla', 2, 1, 1, 42, 9, 'Jl. Jendral Sudirman Jakarta Pusat', 35, 69, '14432', '0218004567', '0218009090', 'info@blabla.com', 'Jakarta'),
+(18, 'Customer Email', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(19, 'Dr Blah blah', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(20, 'MEY', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(21, 'PT AB Corp', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(22, 'PT ABC Corp', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(23, 'PT. Aetra', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(24, 'PT. ABIYASA', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(25, 'CV. Karya sentosa', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(26, 'PT.Coba-cola', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(27, 'PT Angolana', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', ''),
+(28, 'PT Utama Satu', 0, 0, 0, 0, 0, '', 0, 0, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3097,25 +3116,39 @@ CREATE TABLE IF NOT EXISTS `tdat_discounts` (
   `quotation_no` varchar(50) NOT NULL,
   `total_price` varchar(50) NOT NULL,
   `discount_price` varchar(50) NOT NULL,
+  `discount_per` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `tdat_discounts`
 --
 
-INSERT INTO `tdat_discounts` (`id`, `prospect_id`, `quotation_no`, `total_price`, `discount_price`) VALUES
-(1, 20, '1CC/INTI /BR1 -AA/II-2016', '112233', '110000'),
-(2, 19, '3CC/IPW /BR1 -11111 /02-2016', '200112233', '200000000'),
-(3, 1, '', '174778899', ''),
-(4, 4, '', '274112233', ''),
-(5, 18, '8CC/INTA /BR1 -54321 /02-2016', '274112233', ''),
-(6, 21, '2CC/IPPS /BR2 -AA/II-2016', '445544', ''),
-(7, 13, '4CC/CCI /BR3 -12345 /02-2016', '445544', ''),
-(8, 14, '1CC/INTI /BR2 -54321 /02-2016', '445544', ''),
-(9, 7, '', '445544', ''),
-(10, 6, '', '112233', ''),
-(11, 12, '6CC/KSR /BR1 -54321 /02-2016', '220112233', '');
+INSERT INTO `tdat_discounts` (`id`, `prospect_id`, `quotation_no`, `total_price`, `discount_price`, `discount_per`) VALUES
+(1, 20, '1CC/INTI /BR1 -AA/II-2016', '112233', '110000', ''),
+(2, 19, '3CC/IPW /BR1 -11111 /02-2016', '200112233', '200000000', ''),
+(3, 1, '', '188130684', '', ''),
+(4, 4, '', '275309000', '', ''),
+(5, 18, '8CC/INTA /BR1 -54321 /02-2016', '274112233', '', ''),
+(6, 21, '2CC/IPPS /BR2 -AA/II-2016', '891088', '', ''),
+(7, 13, '4CC/CCI /BR3 -12345 /02-2016', '445544', '', ''),
+(8, 14, '1CC/INTI /BR2 -54321 /02-2016', '2227720', '', ''),
+(9, 7, '', '2227720', '', ''),
+(10, 6, '', '238000', '', ''),
+(11, 12, '6CC/KSR /BR1 -54321 /02-2016', '221190000', '220000000', '0.507560679195'),
+(12, 5, '', '2380000', '2200000', '1.98961089876'),
+(13, 22, '1CC/INTI /BR1 -AA/II-2016', '54891088', '53000000', '3.44516399456'),
+(14, 15, '6CC/KSR /BR1 -54321 /02-2016', '66775570', '65000000', '2.66386392504'),
+(15, 17, '3CC/IPW /BR1 -54321 /02-2016', '66778899', '', ''),
+(16, 10, '01/01/01', '20224466', '', ''),
+(19, 8, '', '448932', '', ''),
+(20, 11, '', '1190000', '', ''),
+(21, 23, '1CC/INTI /BR1 -PM/III-2016', '782476000', '710000000', '2.53625376814'),
+(22, 24, '3CC/IPW /BR1 -AA/III-2016', '119000', '', ''),
+(23, 26, '2CC/IPPS /BR3 -AA/III-2016', '446677557', '6500000', '2.65901137197'),
+(24, 25, '3CC/IPW /BR1 -AA/III-2016', '119000', '', ''),
+(25, 29, '005/IPPS /BR4 -AA/III-2016', '66775570', '', ''),
+(26, 30, '006/IPPS /BR4 -AA/III-2016', '66775570', '', '');
 
 -- --------------------------------------------------------
 
@@ -3126,11 +3159,20 @@ INSERT INTO `tdat_discounts` (`id`, `prospect_id`, `quotation_no`, `total_price`
 CREATE TABLE IF NOT EXISTS `tdat_incentives` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idlead` int(11) NOT NULL,
-  `iduser` int(11) NOT NULL,
-  `value` int(11) NOT NULL,
+  `iduser` varchar(100) NOT NULL,
+  `value` varchar(40) NOT NULL,
   `currency` varchar(10) NOT NULL,
+  `idprospect` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tdat_incentives`
+--
+
+INSERT INTO `tdat_incentives` (`id`, `idlead`, `iduser`, `value`, `currency`, `idprospect`) VALUES
+(1, 7, '54321 - Paramitha Megarani', '2227720', 'IDR', 7),
+(2, 3, '54321 - Paramitha Megarani', '238000', 'IDR', 6);
 
 -- --------------------------------------------------------
 
@@ -3152,7 +3194,7 @@ CREATE TABLE IF NOT EXISTS `tdat_industries` (
 
 INSERT INTO `tdat_industries` (`id`, `code`, `name`, `description`) VALUES
 (1, 'MIN', 'Mining', 'Mining Industries'),
-(2, 'MIN', 'Construction', 'Construction Industries'),
+(2, 'CON', 'Construction', 'Construction Industries'),
 (3, 'GIN', 'General Industry', 'General Industries'),
 (4, 'ACU', 'Agri Culture', 'Agri Culture Industries'),
 (5, 'TRA', 'Transportation', 'Transportation Industries'),
@@ -3179,7 +3221,7 @@ CREATE TABLE IF NOT EXISTS `tdat_leaddetails` (
   `quality` varchar(50) NOT NULL,
   `idstatus` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `tdat_leaddetails`
@@ -3195,14 +3237,31 @@ INSERT INTO `tdat_leaddetails` (`id`, `idlead`, `idcompany`, `idbranch`, `idcust
 (10, 14, 2, 1, 6, '2016-02-11', 45, 'Okeh', 3),
 (11, 8, 1, 2, 7, '2016-02-12', 2, '20', 3),
 (12, 11, 6, 1, 8, '2016-02-15', 2, '12', 3),
-(13, 12, 5, 1, 9, '2016-02-16', 45, '900', 2),
-(14, 17, 1, 1, 13, '2016-02-16', 45, '', 2),
+(13, 12, 5, 1, 9, '2016-02-16', 45, '900', 1),
+(14, 17, 1, 1, 13, '2016-03-15', 45, '', 4),
 (15, 12, 1, 1, 10, '2016-02-15', 45, '800', 3),
 (16, 15, 8, 1, 11, '2016-02-15', 2, '90', 3),
 (17, 18, 3, 1, 12, '2016-02-16', 45, 'BAGUS DEH', 3),
 (18, 19, 1, 1, 14, '2016-02-16', 45, '10', 3),
 (19, 9, 2, 2, 15, '2016-02-17', 45, 'qualified', 3),
-(20, 16, 6, 2, 16, '0000-00-00', 0, '99', 1);
+(20, 16, 6, 2, 16, '2016-03-15', 45, '99', 1),
+(21, 20, 1, 1, 14, '2016-03-04', 45, '10', 1),
+(22, 21, 1, 1, 17, '2016-03-07', 2, '80', 3),
+(23, 22, 6, 1, 18, '2016-03-22', 2, '90', 3),
+(24, 23, 3, 1, 19, '2016-03-08', 45, 'good', 3),
+(25, 23, 2, 0, 8, '2016-03-08', 45, 'good', 4),
+(26, 24, 3, 1, 20, '2016-03-08', 45, 'GOOD', 3),
+(27, 27, 2, 2, 21, '2016-03-08', 45, '', 1),
+(28, 28, 2, 3, 22, '2016-03-08', 45, '', 3),
+(29, 29, 2, 3, 22, '0000-00-00', 0, '', 1),
+(30, 30, 1, 0, 3, '0000-00-00', 0, '', 1),
+(31, 31, 2, 3, 23, '0000-00-00', 0, '', 1),
+(32, 32, 3, 1, 24, '2016-03-16', 45, 'qulified', 3),
+(33, 33, 3, 2, 25, '2016-03-16', 45, 'qualified', 3),
+(35, 34, 3, 3, 26, '2016-03-16', 45, 'poor', 4),
+(36, 35, 2, 4, 27, '2016-03-16', 45, 'Good', 3),
+(37, 35, 3, 4, 28, '2016-03-16', 45, 'good', 4),
+(38, 36, 3, 1, 8, '0000-00-00', 0, 'GOOD', 1);
 
 -- --------------------------------------------------------
 
@@ -3257,7 +3316,7 @@ CREATE TABLE IF NOT EXISTS `tdat_leads` (
   `quality` varchar(30) NOT NULL,
   `assigntype` varchar(30) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `tdat_leads`
@@ -3268,18 +3327,35 @@ INSERT INTO `tdat_leads` (`id`, `idsource`, `projectno`, `createddate`, `created
 (2, 1, 101, '2016-01-19', 45, 4, 0, 0, 'Proyek MRT Lebak Bulus-Kota', 'Test Project Description', 'Status Test', 'Januari 2015', 'Januari 2017', 'DKI Jakarta', 'Jakarta Timur', 'Jalan jalan', 'Test project', 'Post Tender', 'Wika', '2016-01-19', 'Engineer: Buana Archicon PT, Mr Arif Palurui  - Project Coordinator  (Address: Gedung Buana Lantai 2, Jalan Ciputat Raya No. 163 Pondok Pinang, Jakarta Selatan, Jakarta 12310, Indonesia Phone: 62 21 7581 6606 Email: buanarchie@yahoo.com) || Environmental Impact Assessment: Tribina Matra Carya Cipta PT, Mr Teguh Mulyanto  - Architect  (Address: Jalan Melawai X No 9, Kebayoran Baru, Jakarta, Jakarta 12120, Indonesia Phone: 62 21 722 9319) || Feasibility Consultant: Virama Karya (Persero) PT, (Address: Jalan Hang Tuah Raya No. 26, Kebayoran Baru, Jakarta Selatan, Jakarta 12120, Indonesia Phone: 62 21 739 7545 Email: info@viramakarya.co.id) || Design Engineer: Indec Internusa PT, Mr Taruna Jaya  - Deputi Operasional  (Address: Jalan Cikutra No. 229, Bandung, West Java 40124, Indonesia Phone: 62 22 720 3428 Email: indecbdg@indo.net.id)', 'Adhi Karya', 'Waskita', 'Waskita', 100000000, 100000, 'Qualified', 'BID'),
 (3, 5, 122222, '2016-01-23', 45, 4, 0, 0, 'OK Subha Test', 'Ok Test Description Subha', 'ok project Status  S', '2016-01-24', '2016-01-31', 'Belur', 'Hooghly', 'ok Address Subha', 'ok Category Subha', 'ok Project Stage Subha', 'ok Designer Subha', '2016-02-18', 'ok Dev Manager Subha', 'Dev Test Subha', 'Dev Cont test Subha', 'dev Sub Cont Test Subha', 2000000, 200000, 'Qdev Qulified Subha', 'dev Assign ok Test Subha'),
 (4, 4, 645, '2016-01-23', 45, 8, 0, 0, 'OK Test', 'Ok Test Description', 'Ok project Status', '2016-01-23', '2016-01-30', 'Bali', 'Sudirman', 'Ok Address', 'Ok Category', 'Ok Project Stage', 'Ok Designer', '2016-02-16', 'Ok Dev Manager', 'Dev Test', 'Dev Cont test', 'dev Sub Cont Test', 10000000, 10000000, 'Qdev Qulified', 'Dev Assign ok Test'),
-(7, 8, 108, '2016-01-26', 2, 4, 0, 0, 'Project test tuesday', 'loremipsum', 'Status Test', 'Januari 2016', 'Januari 2017', 'DKI Jakarta', 'Jakarta Pusat', 'jalanjalan', 'Test project', 'Post Tender', 'Wika', '2016-01-12', 'Engineer: Buana Archicon PT, Mr Arif Palurui  - Project Coordinator  (Address: Gedung Buana Lantai 2, Jalan Ciputat Raya No. 163 Pondok Pinang, Jakarta Selatan, Jakarta 12310, Indonesia Phone: 62 21 7581 6606 Email: buanarchie@yahoo.com) || Environmental Impact Assessment: Tribina Matra Carya Cipta PT, Mr Teguh Mulyanto  - Architect  (Address: Jalan Melawai X No 9, Kebayoran Baru, Jakarta, Jakarta 12120, Indonesia Phone: 62 21 722 9319) || Feasibility Consultant: Virama Karya (Persero) PT, (Address: Jalan Hang Tuah Raya No. 26, Kebayoran Baru, Jakarta Selatan, Jakarta 12120, Indonesia Phone: 62 21 739 7545 Email: info@viramakarya.co.id) || Design Engineer: Indec Internusa PT, Mr Taruna Jaya  - Deputi Operasional  (Address: Jalan Cikutra No. 229, Bandung, West Java 40124, Indonesia Phone: 62 22 720 3428 Email: indecbdg@indo.net.id)', 'Adhi Karya', 'Waskita', 'Waskita', 100000000, 100000, 'Qualified', 'BID'),
-(8, 0, 144313001, '2016-02-17', 45, 1, 0, 0, 'ROADWORKS - upgrade (GAMBUT - PULAU SARI ROAD IMPR', '* Road upgrade (approx. 8 km length x 9 m width) * Hotmix asphalt overlay * Surface marking', 'Construction Commenc', '42078', '42231', 'South Kalimantan', 'Banjar', 'Gambut - Pulau Sari', 'Infrastructure', 'Construction: Main Contract Aw', 'null', '0000-00-00', 'Supervisory Consultant: Dharma Cipta Pratama CV, Mr Muhammad Anshari  - Director  (Address: Jalan Dharma Bakti V B No 40 A, Banjarmasin, South Kalimantan 70112, Indonesia Phone: 62 511 335 1374 Fax: 62 511 335 1374 Email: dharma_cp2001@yahoo.co.id) || Government Implementing Agency: Dinas Pekerjaan Umum Propinsi Kalimantan Selatan - Sub Dinas Bina Marga, Mr Gusti Tahmidillah  - Project Coordinator - Kepala PPK  (Address: Jalan DI Panjaitan No 8, Banjarmasin, South Kalimantan 70114, Indonesia Phone: 62 511 335 1456 Fax: 62 511 335 4684) || Supervisory Consultant: Dharma Cipta Pratama CV, Mr Diding  - Architect/ Engineer  (Address: Jalan Dharma Bakti V B No 40 A, Banjarmasin, South Kalimantan 70112, Indonesia Phone: 62 511 335 1374 Fax: 62 511 335 1374 Email: dharma_cp2001@yahoo.co.id)', 'Civil Engineer: Matra Estetika Rekayasa PT, Mr H Supar ST  - Director - Architect  (Address: Jalan Gatot Subroto Barat I No 29, Banjarmasin, South Kalimantan 70234, Indonesia Phone: 62 511 325 2476 Fax: 62 511 325 5680 Email: matra_mer@yahoo.co.id) ; Mrs Rini Ulfa  - Staff of Administration Project  (Address: Jalan Gatot Subroto Barat I No 29, Banjarmasin, South Kalimantan 70234, Indonesia Phone: 62 511 325 2476 Fax: 62 511 325 5680 Email: matra_mer@yahoo.co.id)', 'Road Work Contractor: Putra Kanca PT, Mr Rudy Firmansyah  - Director  (Address: Jalan H. Zafri Zam zam No.12 Kompleks Wartawan, Banjarmasin, South Kalimantan 70116, Indonesia Phone: 62 511 755 3532 Fax: Not available) ; Mr M. Gifariyono  - Project Manager  (Address: Jalan H. Zafri Zam zam No.12 Kompleks Wartawan, Banjarmasin, South Kalimantan 70116, Indonesia Phone: 62 511 755 3532 Fax: Not available)', 'null', 19200, 3840, 'null', 'null'),
+(7, 8, 108, '2016-01-26', 2, 4, 1, 1, 'Project test tuesday', 'loremipsum', 'Status Test', 'Januari 2016', 'Januari 2017', 'DKI Jakarta', 'Jakarta Pusat', 'jalanjalan', 'Test project', 'Post Tender', 'Wika', '2016-01-12', 'Engineer: Buana Archicon PT, Mr Arif Palurui  - Project Coordinator  (Address: Gedung Buana Lantai 2, Jalan Ciputat Raya No. 163 Pondok Pinang, Jakarta Selatan, Jakarta 12310, Indonesia Phone: 62 21 7581 6606 Email: buanarchie@yahoo.com) || Environmental Impact Assessment: Tribina Matra Carya Cipta PT, Mr Teguh Mulyanto  - Architect  (Address: Jalan Melawai X No 9, Kebayoran Baru, Jakarta, Jakarta 12120, Indonesia Phone: 62 21 722 9319) || Feasibility Consultant: Virama Karya (Persero) PT, (Address: Jalan Hang Tuah Raya No. 26, Kebayoran Baru, Jakarta Selatan, Jakarta 12120, Indonesia Phone: 62 21 739 7545 Email: info@viramakarya.co.id) || Design Engineer: Indec Internusa PT, Mr Taruna Jaya  - Deputi Operasional  (Address: Jalan Cikutra No. 229, Bandung, West Java 40124, Indonesia Phone: 62 22 720 3428 Email: indecbdg@indo.net.id)', 'Adhi Karya', 'Waskita', 'Waskita', 100000000, 100000, 'Qualified', 'BID'),
+(8, 1, 144313001, '2016-02-17', 45, 1, 0, 0, 'ROADWORKS - upgrade (GAMBUT - PULAU SARI ROAD IMPR', '* Road upgrade (approx. 8 km length x 9 m width) * Hotmix asphalt overlay * Surface marking', 'Construction Commenc', '42078', '42231', 'South Kalimantan', 'Banjar', 'Gambut - Pulau Sari', 'Infrastructure', 'Construction: Main Contract Aw', 'null', '0000-00-00', 'Supervisory Consultant: Dharma Cipta Pratama CV, Mr Muhammad Anshari  - Director  (Address: Jalan Dharma Bakti V B No 40 A, Banjarmasin, South Kalimantan 70112, Indonesia Phone: 62 511 335 1374 Fax: 62 511 335 1374 Email: dharma_cp2001@yahoo.co.id) || Government Implementing Agency: Dinas Pekerjaan Umum Propinsi Kalimantan Selatan - Sub Dinas Bina Marga, Mr Gusti Tahmidillah  - Project Coordinator - Kepala PPK  (Address: Jalan DI Panjaitan No 8, Banjarmasin, South Kalimantan 70114, Indonesia Phone: 62 511 335 1456 Fax: 62 511 335 4684) || Supervisory Consultant: Dharma Cipta Pratama CV, Mr Diding  - Architect/ Engineer  (Address: Jalan Dharma Bakti V B No 40 A, Banjarmasin, South Kalimantan 70112, Indonesia Phone: 62 511 335 1374 Fax: 62 511 335 1374 Email: dharma_cp2001@yahoo.co.id)', 'Civil Engineer: Matra Estetika Rekayasa PT, Mr H Supar ST  - Director - Architect  (Address: Jalan Gatot Subroto Barat I No 29, Banjarmasin, South Kalimantan 70234, Indonesia Phone: 62 511 325 2476 Fax: 62 511 325 5680 Email: matra_mer@yahoo.co.id) ; Mrs Rini Ulfa  - Staff of Administration Project  (Address: Jalan Gatot Subroto Barat I No 29, Banjarmasin, South Kalimantan 70234, Indonesia Phone: 62 511 325 2476 Fax: 62 511 325 5680 Email: matra_mer@yahoo.co.id)', 'Road Work Contractor: Putra Kanca PT, Mr Rudy Firmansyah  - Director  (Address: Jalan H. Zafri Zam zam No.12 Kompleks Wartawan, Banjarmasin, South Kalimantan 70116, Indonesia Phone: 62 511 755 3532 Fax: Not available) ; Mr M. Gifariyono  - Project Manager  (Address: Jalan H. Zafri Zam zam No.12 Kompleks Wartawan, Banjarmasin, South Kalimantan 70116, Indonesia Phone: 62 511 755 3532 Fax: Not available)', 'null', 19200, 3840, 'null', ''),
 (9, 0, 144313002, '2016-02-17', 45, 3, 0, 0, 'ROADWORKS - upgrade (JALAN ASAM BARU - SIMPANG BAN', '* Road upgrade (approx. 3 km length x 12 m width) * Hotmix asphalt overlay * Earthworks * Surface line marking', 'Contract not yet Let', '42461', '42614', 'Central Kalimantan', 'Seruyan', 'Jalan Asam Baru - Simpang Bangkal', 'Infrastructure', 'Post tender', '', '0000-00-00', 'Supervisory Consultant: Anugerah Kridapradana PT, Mr Gunawan Wibisono  - Director  (Address: Jalan Petogogan II No. 45, Kebayoran Baru, Jakarta Selatan, Jakarta 12170, Indonesia Phone: 62 21 7279 4150 Email: pt_anugerah_kridapradana@yahoo.com) || Government Implementing Agency: Dinas Pekerjaan Umum Propinsi Kalimantan Tengah - Perencanaan dan Pengawasan Jalan Nasional, Mr Kurnia Halomoan  - Kepala Satker  (Address: Jalan Letjen S. Parman No. 02, Lantai 03, Palangkaraya, Central Kalimantan 73112, Indonesia Phone: 62 536 322 0767 / 322 0678 Email: pokjap2jnkalteng@gmail.com) || Supervisory Consultant: Epadascon Permata PT, Mr Sutriono Hadi  - Director - Operational Manager  (Address: Jalan Ciputat Raya No. 33 - D, Pondok Pinang, Jakarta Selatan, Jakarta 12310, Indonesia Phone: 62 21 750 5925 / 750 5916 Email: epadascon@gmail.com) Purnajasa Bimapratama PT - Jakarta, Mr Kusno Sulaeman  - Project Director  (Address: Komplek Primkopti Blok C4 No. 18, Setu, Cipayung, Jakarta Timur, Jakarta 13880, Indonesia Phone: 62 21 8497 6467 Email: pt.bimapratama@yahoo.com) Wesitan Konsultasi Pembangunan PT, Mrs Desy  - Procurement Staff  (Address: Jalan Bontoramba No. 10, Gunung Sari Baru, Makassar, South Sulawesi 90221, Indonesia Phone: 62 411 830 897 / 830 898 Email: wesitan@gmail.com) Wiranta Bhuana Raya PT, Mr Ngakan Made Gunawan  - Director  (Address: Komplek Bougenville Block C14, Jalan Sukanegara No. 28, Antapani II, Bandung, West Java 40291, Indonesia Phone: 62 22 720 5913 / 720 4209 Email: wirantabhuanaraya@gmail.com) || Government Implementing Agency: Dinas Pekerjaan Umum Propinsi Kalimantan Tengah - SNVT Pelaksanaan Jalan Nasional Wilayah I, Mr Ir. Kalimonang MT  - Kepala Satker  (Address: Jalan Tjilik Riwut No. 14 Km. 3, Palangkaraya, Central Kalimantan 73112, Indonesia Phone: 62 536 322 0767 / 322 0678) || Tender Office: ; Mr Rooswandy Juniawan  - Member of Tender Committee  (Address: Jalan Tjilik Riwut No. 14 Km. 3, Palangkaraya, Central Kalimantan 73112, Indonesia Phone: 62 536 322 0767 / 322 0678) || Government Implementing Agency: Dinas Pekerjaan Umum Propinsi Kalimantan Tengah - PPK 04 Asam Baru - Km 65 (Simpang Bangkal) - Batas Kota Sampit, Mr Lambak ST.  - Project Coordinator  (Address: Jalan Tjilik Riwut No. 14 Km. 3, Palangkaraya, Central Kalimantan 73112, Indonesia Phone: 62 536 322 0767 / 322 0678) || Tender Office: Dinas Pekerjaan Umum Propinsi Kalimantan Tengah - Perencanaan dan Pengawasan Jalan Nasional, Mr Endy ST. MT.  - Member of Tender Committee  (Address: Jalan Letjen S. Parman No. 02, Lantai 03, Palangkaraya, Central Kalimantan 73112, Indonesia Phone: 62 536 322 0767 / 322 0678 Email: pokjap2jnkalteng@gmail.com)', 'TEST ===OK===?', '', '', 28604, 5721, '', ''),
 (10, 8, 1344, '2016-02-01', 2, 3, 0, 0, 'weeee', 'hhrhrhrr', 'vbn', 'janu', '', 'fghjk', 'rty', 'fghjk', 'qwwww', 'tyhj', '', '2016-02-01', '', '', '', '', 0, 0, 'Qualified', ''),
-(11, 1, 12345, '2016-02-02', 2, 3, 0, 0, 'Test Project 1', 'tesss', 'tes', 'januari 2015', 'juli 2015', 'jakarta', 'www', 'www', 'j', 'sss', 's', '0000-00-00', 's', 's', 's', 'subcontractor', 1100, 1000, 'high', 'dd'),
-(12, 2, 12356, '2016-02-02', 2, 2, 0, 0, 'Test Project baru', 'tesss', 'tes', 'januari 2015', 'juli 2015', 'jakarta', 'j', 'j', 'j', 'j', 'jj', '0000-00-00', 'ggg', 'gg', 'gg', 'gg', 11011, 121, 'high', 'df'),
-(14, 0, 546002, '2016-02-10', 45, 3, 0, 0, 'DW1:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 7.8 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Earthworks * Surface marking * Traffic management', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Boyolali', 'Boyolali - Kartasuro (STA 67+000 â€“ 74+800)', 'Infrastructure', 'Post tender', 'Architect: Grha Matra Desain Indonesia PT, Mr Benyamin Aris Nugraha  - Director  (Address: Jalan Budi Raya No.7 E, Kemanggisan, Jakarta, Jakarta 11410, Indonesia Phone: 62 21 5366 6277 Email: gmdi.konsultan@gmail.com) Portal Engineering Perkasa PT, Mr Jackson OH Mboe  - Director  (Address: Jalan Sungai Tami No. 1B Dok VIII, Jayapura, Papua 99116, Indonesia Phone: 62 967 543 363 Email: portal_eng@yahoo.com)', '0000-00-00', 'Developer: Hutama Karya (Persero) PT - Pengembangan Jalan Tol (JT HAKA), Mr Rizal Sucipto  - Kepala Divisi Pengembangan Jalan Tol  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679) ; Mr Ilham D Satria  - Project Manager  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679) ; Mr Krisna Aditya Yudha  - Procurment Staff  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679)', 'Environmental Impact Assessment: Kanta Karya Utama PT, Mr Zaenal Mustofa  - Director  (Address: Jalan Duren Tiga Selatan VII No. 9, Warung Buncit, Jakarta Selatan, Jakarta 12760, Indonesia Phone: 62 21 798 7946 Email: kantakarya@gmail.com) || Civil Engineer: Perentjana Djaja PT, Ms Irza Ratna Sari  - Head of Toll Road Division  (Address: Wisma Pede 3 - 4th Floor, Jalan M.T. Haryono, Kavling 17, Jakarta Selatan, Jakarta 12810, Indonesia Phone: 62 21 829 0442 / 830 1101 Email: office@perentjanadjaja.co.id) || Environmental Impact Assessment: Kanta Karya Utama PT, Mr Opik Hidayat  - Technical Division / Purchasing Staff  (Address: Jalan Duren Tiga Selatan VII No. 9, Warung Buncit, Jakarta Selatan, Jakarta 12760, Indonesia Phone: 62 21 798 7946 Email: kantakarya@gmail.com)', '?', '?', 1000000, 200000, '?', 'BID'),
+(11, 1, 12345, '2016-02-02', 2, 4, 0, 0, 'Test Project 1', 'tesss', 'tes', 'januari 2015', 'juli 2015', 'jakarta', 'www', 'www', 'j', 'sss', 's', '0000-00-00', 's', 's', 's', 'subcontractor', 1100, 1000, 'high', 'dd'),
+(12, 2, 12356, '2016-02-02', 2, 3, 0, 0, 'Test Project baru', 'tesss', 'tes', 'januari 2015', 'juli 2015', 'jakarta', 'j', 'j', 'j', 'j', 'jj', '0000-00-00', 'ggg', 'gg', 'gg', 'gg', 11011, 121, 'high', 'df'),
+(14, 0, 546002, '2016-02-10', 45, 8, 0, 0, 'DW1:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 7.8 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Earthworks * Surface marking * Traffic management', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Boyolali', 'Boyolali - Kartasuro (STA 67+000 â€“ 74+800)', 'Infrastructure', 'Post tender', 'Architect: Grha Matra Desain Indonesia PT, Mr Benyamin Aris Nugraha  - Director  (Address: Jalan Budi Raya No.7 E, Kemanggisan, Jakarta, Jakarta 11410, Indonesia Phone: 62 21 5366 6277 Email: gmdi.konsultan@gmail.com) Portal Engineering Perkasa PT, Mr Jackson OH Mboe  - Director  (Address: Jalan Sungai Tami No. 1B Dok VIII, Jayapura, Papua 99116, Indonesia Phone: 62 967 543 363 Email: portal_eng@yahoo.com)', '0000-00-00', 'Developer: Hutama Karya (Persero) PT - Pengembangan Jalan Tol (JT HAKA), Mr Rizal Sucipto  - Kepala Divisi Pengembangan Jalan Tol  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679) ; Mr Ilham D Satria  - Project Manager  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679) ; Mr Krisna Aditya Yudha  - Procurment Staff  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679)', 'Environmental Impact Assessment: Kanta Karya Utama PT, Mr Zaenal Mustofa  - Director  (Address: Jalan Duren Tiga Selatan VII No. 9, Warung Buncit, Jakarta Selatan, Jakarta 12760, Indonesia Phone: 62 21 798 7946 Email: kantakarya@gmail.com) || Civil Engineer: Perentjana Djaja PT, Ms Irza Ratna Sari  - Head of Toll Road Division  (Address: Wisma Pede 3 - 4th Floor, Jalan M.T. Haryono, Kavling 17, Jakarta Selatan, Jakarta 12810, Indonesia Phone: 62 21 829 0442 / 830 1101 Email: office@perentjanadjaja.co.id) || Environmental Impact Assessment: Kanta Karya Utama PT, Mr Opik Hidayat  - Technical Division / Purchasing Staff  (Address: Jalan Duren Tiga Selatan VII No. 9, Warung Buncit, Jakarta Selatan, Jakarta 12760, Indonesia Phone: 62 21 798 7946 Email: kantakarya@gmail.com)', '?', '?', 1000000, 200000, '?', 'BID'),
 (15, 5, 2989002, '2016-02-10', 45, 3, 0, 0, 'DW2:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 24.5 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Road separator * Earthworks * Surface marking', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Salatiga', 'Salatiga - Boyolali (STA 39+000 â€“ 63+500)', 'Infrastructure', 'Post tender', 'Architect: Architeam Design Center PT, Mr Soni Sumarsono  - Chief Architect  (Address: Jalan Tamansari No. 70, Bandung, West Java 40132, Indonesia Phone: 62 22 250 2365 Email: architeamdc@gmail.com) || Master Planner: Indulexco PT - Cabang Balikpapan, Mr Sudjatmiko  - Project Director  (Address: Jalan R. E. Martadinata No. 8, Mekar Sari, Balikpapan, East Kalimantan 76122, Indonesia Phone: 62 542 422 961) || Architect: Architeam Design Center PT, Mr Supriyanto  - Architect  (Address: Jalan Tamansari No. 70, Bandung, West Java 40132, Indonesia Phone: 62 22 250 2365 Email: architeamdc@gmail.com) || Master Planner: Indulexco PT - Cabang Balikpapan, Mr Bonti  - Architect  (Address: Jalan R. E. Martadinata No. 8, Mekar Sari, Balikpapan, East Kalimantan 76122, Indonesia Phone: 62 542 422 961)', '0000-00-00', 'Developer: Citra Marga Nusaphala Persada Tbk PT, Mr Andi Mayoriko  - Procurement Manager & Tender  (Address: Gedung CMNP Lantai Dasar, Jalan Komplek L Yos Sudarso Kav 28, Sunter Agung, Jakarta Utara, Jakarta 14350, Indonesia Phone: 62 21 6530 6930 / 6530 6369) || Government Implementing Agency: Kementerian Pekerjaan Umum dan Perumahan Rakyat Indonesia - Badan Pengatur Jalan Tol (BPJT), Mr Achmad Gani Ghazali A  - Head Officer  (Address: Gedung Balai Krida, Jalan Iskandarsyah Raya No. 35, Jakarta, Jakarta 12110, Indonesia Phone: 62 21 725 8063) || Pre-Qualification Office: ; Mr Eka Priya Anas  - Head of Tender Committee  (Address: Gedung Balai Krida, Jalan Iskandarsyah Raya No. 35, Jakarta, Jakarta 12110, Indonesia Phone: 62 21 725 8063) || Developer: Jasa Marga (Persero) Tbk PT, Ms Truli Nawangsasi  - Head of Toll Road Business Development Division  (Address: Plaza Tol Taman Mini Indonesia Indah, Jalan Tol Jagorawi, Jakarta, Jakarta 13550, Indonesia Phone: 62 21 841 3630 / 841 3526 Email: jasmar@jasamarga.com) Bangun Tjipta Sarana PT, Mr Faturahman  - Project Director  (Address: Gedung Bangun Tjipta 6th Floor, Jalan Gatot Subroto Kav 54, Kuningan Timur, Setiabudi, Jakarta Selatan, Jakarta 12950, Indonesia Phone: 62 21 570 9091 / 5365 3078 / 5367 2244)', '?', '?', '?', 565600, 113120, '?', 'BID'),
-(16, 0, 5071002, '2016-02-10', 45, 1, 0, 0, 'DW3:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 17.3 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Earthworks * Surface marking * Traffic management', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Salatiga', 'Bawen - Salatiga (STA 23+100 â€“ 40+400)', 'Infrastructure', 'Post tender', 'Master Planner: Atrya Swascipta Rekayasa PT, Mr Agus Rochimat  - Director  (Address: Jalan Cikapayang No. 11, Dago, Bandung, West Java 40124, Indonesia Phone: 62 22 421 4122 Email: global@atrya.co.id)', '0000-00-00', 'Developer: Kresna Kusuma Dyandra Marga PT - Waskita Toll Road, Mr Herwi Diakto  - Director  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com) ; Mr Purma Yoserizal  - Planning Manager  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com) ; Mr Dwi Pratikto  - Project Manager  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com)', 'Design Engineer: Buana Archicon PT, Mr Arif Palurui  - Project Coordinator  (Address: Gedung Buana Lantai 2, Jalan Ciputat Raya No. 163 Pondok Pinang, Jakarta Selatan, Jakarta 12310, Indonesia Phone: 62 21 7581 6606 Email: buanarchie@yahoo.com)', 'Piling & Foundation Contractor: Berdikari Pondasi Perkasa PT, Mr Ir. Mahmud  - Project Manager  (Address: Jalan Pangeran Tubagus Angke No. 99, Jelambar, Jakarta Barat, Jakarta 11460, Indonesia Phone: 62 21 566 2756 / 566 4415 / 566 3952 Email: berdikari_pp@telkom.net) || Road Work Contractor: Waskita Karya (Persero) Tbk PT - Divisi Sipil, Mr Sigit Purwanto  - Project Manager  (Address: Gedung Waskita 5th Floor, Jalan M.T. Haryono Kavling No. 10, Jakarta, Jakarta 13340, Indonesia Phone: 62 21 819 8158 / 819 1617 Email: div-sipil@waskita.co.id) || Piling & Foundation Contractor: Grant Surya Multi Sarana PT, Mr Taufik Akbar  - Project Manager  (Address: Jalan Kapuk Kamal Muara No. 8D, Kompleks Kapuk Berlian, Penjaringan, Jakarta Utara, Jakarta 14470, Indonesia Phone: 62 21 5595 1180 Email: grant_surya@yahoo.com) || Road Work Contractor: Waskita Karya (Persero) Tbk PT - Divisi Sipil, Ms Diana Ulfi  - Staff Bagian Pengendalian  (Address: Gedung Waskita 5th Floor, Jalan M.T. Haryono Kavling No. 10, Jakarta, Jakarta 13340, Indonesia Phone: 62 21 819 8158 / 819 1617 Email: div-sipil@waskita.co.id)', 'Sub-Contractor: Waskita Beton Precast PT, Mr Edison Sianturi  - Project Manager  (Address: Graha Dirgantara Building 2nd Floor, Jalan Protokol Halim Perdana Kusuma No 8, Jakarta Timur, Jakarta 13610, Indonesia Phone: 62 21 2983 8020 / 2983 8021 / 2983 8022 / 2983 8023 Email: info@waskitaprecast.co.id)', 3771429, 754286, 'Qualified', 'BID'),
+(16, 4, 5071002, '2016-02-10', 45, 1, 0, 0, 'DW3:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 17.3 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Earthworks * Surface marking * Traffic management', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Salatiga', 'Bawen - Salatiga (STA 23+100 â€“ 40+400)', 'Infrastructure', 'Post tender', 'Master Planner: Atrya Swascipta Rekayasa PT, Mr Agus Rochimat  - Director  (Address: Jalan Cikapayang No. 11, Dago, Bandung, West Java 40124, Indonesia Phone: 62 22 421 4122 Email: global@atrya.co.id)', '0000-00-00', 'Developer: Kresna Kusuma Dyandra Marga PT - Waskita Toll Road, Mr Herwi Diakto  - Director  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com) ; Mr Purma Yoserizal  - Planning Manager  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com) ; Mr Dwi Pratikto  - Project Manager  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com)', 'Design Engineer: Buana Archicon PT, Mr Arif Palurui  - Project Coordinator  (Address: Gedung Buana Lantai 2, Jalan Ciputat Raya No. 163 Pondok Pinang, Jakarta Selatan, Jakarta 12310, Indonesia Phone: 62 21 7581 6606 Email: buanarchie@yahoo.com)', 'Piling & Foundation Contractor: Berdikari Pondasi Perkasa PT, Mr Ir. Mahmud  - Project Manager  (Address: Jalan Pangeran Tubagus Angke No. 99, Jelambar, Jakarta Barat, Jakarta 11460, Indonesia Phone: 62 21 566 2756 / 566 4415 / 566 3952 Email: berdikari_pp@telkom.net) || Road Work Contractor: Waskita Karya (Persero) Tbk PT - Divisi Sipil, Mr Sigit Purwanto  - Project Manager  (Address: Gedung Waskita 5th Floor, Jalan M.T. Haryono Kavling No. 10, Jakarta, Jakarta 13340, Indonesia Phone: 62 21 819 8158 / 819 1617 Email: div-sipil@waskita.co.id) || Piling & Foundation Contractor: Grant Surya Multi Sarana PT, Mr Taufik Akbar  - Project Manager  (Address: Jalan Kapuk Kamal Muara No. 8D, Kompleks Kapuk Berlian, Penjaringan, Jakarta Utara, Jakarta 14470, Indonesia Phone: 62 21 5595 1180 Email: grant_surya@yahoo.com) || Road Work Contractor: Waskita Karya (Persero) Tbk PT - Divisi Sipil, Ms Diana Ulfi  - Staff Bagian Pengendalian  (Address: Gedung Waskita 5th Floor, Jalan M.T. Haryono Kavling No. 10, Jakarta, Jakarta 13340, Indonesia Phone: 62 21 819 8158 / 819 1617 Email: div-sipil@waskita.co.id)', 'Sub-Contractor: Waskita Beton Precast PT, Mr Edison Sianturi  - Project Manager  (Address: Graha Dirgantara Building 2nd Floor, Jalan Protokol Halim Perdana Kusuma No 8, Jakarta Timur, Jakarta 13610, Indonesia Phone: 62 21 2983 8020 / 2983 8021 / 2983 8022 / 2983 8023 Email: info@waskitaprecast.co.id)', 3771429, 754286, 'Qualified', 'BID'),
 (17, 7, 12, '2016-02-15', 45, 1, 0, 0, 'Test Dev', 'Testing, please ignore it.', 'Ok project Status', '2016-02-15', '2016-02-25', 'Bali', 'Sudirman', 'Test Address', 'Dev', 'Ok Project Stage', 'Dev developer', '2016-02-16', 'Dev developer', 'Dev developer', 'Dev developer', 'Dev developer', 10000000, 10000000, 'Qualified', 'Dev Assign ok Test'),
 (18, 6, 2001, '2016-02-16', 45, 3, 0, 0, 'PROJECT KU DW04', 'PROJECT KU DW04', 'SDFSDFS', 'JAN 2016', 'MAR 2016', 'JAWA BARAT', 'BEKASI', 'DISINI', 'INDUSTRY', 'DSFSDFDS', 'SDFSFS', '2016-02-01', 'SDFSFS', 'SDFSFS', 'SDFSFS', 'SDFSFS', 3432423432, 23424234, 'Not Qualified', 'BID'),
-(19, 2, 555555, '2016-02-16', 45, 3, 0, 0, 'Deb & Subha', 'fyukbvjujhyuyfi,l kuh uyhciouy ukjuguygk', 'Normal', '2016-02-18', '2016-02-25', 'Belur', 'Belur', 'sdjfgvdbjsbhvbvjcsdbvjhsdbzjvj', 'Dev Cat', 'Normal', 'general-des', '2016-02-18', 'General-man', 'General-eng', 'General', 'sub-general', 120000000, 150000000, 'Qualified', 'General-Assign');
+(19, 2, 555555, '2016-02-16', 45, 3, 0, 0, 'Deb & Subha', 'fyukbvjujhyuyfi,l kuh uyhciouy ukjuguygk', 'Normal', '2016-02-18', '2016-02-25', 'Belur', 'Belur', 'sdjfgvdbjsbhvbvjcsdbvjhsdbzjvj', 'Dev Cat', 'Normal', 'general-des', '2016-02-18', 'General-man', 'General-eng', 'General', 'sub-general', 120000000, 150000000, 'Qualified', 'General-Assign'),
+(20, 3, 1007, '2016-03-03', 45, 1, 0, 0, 'web', 'web web web web web web web web web web web web web web web web', 'web status', '01-03-2016', '01-03-2016', 'web town', 'p web town', 'web address', 'cat web', 'web stage', 'web designer', '2016-03-25', 'web manager', 'web consultant', 'web main contractor', 'web sub contractor', 1200000000, 1200000000, 'Qualified', 'web assign type'),
+(21, 5, 0, '2016-03-03', 45, 4, 0, 0, 'jalan tol antasari depok', '', '', '05-03-2016', '05-03-2019', '', '', 'Antasari Depok', '', '', '', '0000-00-00', '', '', '', '', 0, 0, '', ''),
+(22, 6, 0, '2016-03-08', 2, 3, 0, 0, 'Test New Project', 'Proejct test email', '', 'Maret 2016', 'Maret 2017', '', '', '', '', '', '', '0000-00-00', '', '', '', '', 0, 0, 'Qualified', ''),
+(23, 7, 2001, '2016-03-08', 45, 3, 0, 0, 'Blah blah blah', 'Blah blah blah', 'Blah blah blah', '01 Jan 2015', '30 mei 2016', 'Blah blah blah', 'Blah blah blah', 'Blah blah blah', 'Blah blah blah', 'Blah blah blah', 'Blah blah blah', '2016-03-01', 'Blah blah blah', 'Blah blah blah', 'Blah blah blah', 'Blah blah blah', 500, 500, 'Not Qualified', 'bid'),
+(24, 0, 21546002, '2016-03-08', 45, 3, 0, 0, 'D01:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 7.8 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Earthworks * Surface marking * Traffic management', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Boyolali', 'Boyolali - Kartasuro (STA 67+000 â€“ 74+800)', 'Infrastructure', 'Post tender', 'Architect: Grha Matra Desain Indonesia PT, Mr Benyamin Aris Nugraha  - Director  (Address: Jalan Budi Raya No.7 E, Kemanggisan, Jakarta, Jakarta 11410, Indonesia Phone: 62 21 5366 6277 Email: gmdi.konsultan@gmail.com) Portal Engineering Perkasa PT, Mr Jackson OH Mboe  - Director  (Address: Jalan Sungai Tami No. 1B Dok VIII, Jayapura, Papua 99116, Indonesia Phone: 62 967 543 363 Email: portal_eng@yahoo.com)', '0000-00-00', 'Developer: Hutama Karya (Persero) PT - Pengembangan Jalan Tol (JT HAKA), Mr Rizal Sucipto  - Kepala Divisi Pengembangan Jalan Tol  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679) ; Mr Ilham D Satria  - Project Manager  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679) ; Mr Krisna Aditya Yudha  - Procurment Staff  (Address: Hutama Karya Building 6th Floor, Jalan M.T. Haryono Kavling 8, Jakarta Timur, Jakarta 13630, Indonesia Phone: 62 21 819 3708 ext 679)', 'Environmental Impact Assessment: Kanta Karya Utama PT, Mr Zaenal Mustofa  - Director  (Address: Jalan Duren Tiga Selatan VII No. 9, Warung Buncit, Jakarta Selatan, Jakarta 12760, Indonesia Phone: 62 21 798 7946 Email: kantakarya@gmail.com) || Civil Engineer: Perentjana Djaja PT, Ms Irza Ratna Sari  - Head of Toll Road Division  (Address: Wisma Pede 3 - 4th Floor, Jalan M.T. Haryono, Kavling 17, Jakarta Selatan, Jakarta 12810, Indonesia Phone: 62 21 829 0442 / 830 1101 Email: office@perentjanadjaja.co.id) || Environmental Impact Assessment: Kanta Karya Utama PT, Mr Opik Hidayat  - Technical Division / Purchasing Staff  (Address: Jalan Duren Tiga Selatan VII No. 9, Warung Buncit, Jakarta Selatan, Jakarta 12760, Indonesia Phone: 62 21 798 7946 Email: kantakarya@gmail.com)', '?', '?', 1000000, 200000, '?', 'BID'),
+(25, 0, 212989002, '2016-03-08', 45, 1, 0, 0, 'D02:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 24.5 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Road separator * Earthworks * Surface marking', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Salatiga', 'Salatiga - Boyolali (STA 39+000 â€“ 63+500)', 'Infrastructure', 'Post tender', 'Architect: Architeam Design Center PT, Mr Soni Sumarsono  - Chief Architect  (Address: Jalan Tamansari No. 70, Bandung, West Java 40132, Indonesia Phone: 62 22 250 2365 Email: architeamdc@gmail.com) || Master Planner: Indulexco PT - Cabang Balikpapan, Mr Sudjatmiko  - Project Director  (Address: Jalan R. E. Martadinata No. 8, Mekar Sari, Balikpapan, East Kalimantan 76122, Indonesia Phone: 62 542 422 961) || Architect: Architeam Design Center PT, Mr Supriyanto  - Architect  (Address: Jalan Tamansari No. 70, Bandung, West Java 40132, Indonesia Phone: 62 22 250 2365 Email: architeamdc@gmail.com) || Master Planner: Indulexco PT - Cabang Balikpapan, Mr Bonti  - Architect  (Address: Jalan R. E. Martadinata No. 8, Mekar Sari, Balikpapan, East Kalimantan 76122, Indonesia Phone: 62 542 422 961)', '0000-00-00', 'Developer: Citra Marga Nusaphala Persada Tbk PT, Mr Andi Mayoriko  - Procurement Manager & Tender  (Address: Gedung CMNP Lantai Dasar, Jalan Komplek L Yos Sudarso Kav 28, Sunter Agung, Jakarta Utara, Jakarta 14350, Indonesia Phone: 62 21 6530 6930 / 6530 6369) || Government Implementing Agency: Kementerian Pekerjaan Umum dan Perumahan Rakyat Indonesia - Badan Pengatur Jalan Tol (BPJT), Mr Achmad Gani Ghazali A  - Head Officer  (Address: Gedung Balai Krida, Jalan Iskandarsyah Raya No. 35, Jakarta, Jakarta 12110, Indonesia Phone: 62 21 725 8063) || Pre-Qualification Office: ; Mr Eka Priya Anas  - Head of Tender Committee  (Address: Gedung Balai Krida, Jalan Iskandarsyah Raya No. 35, Jakarta, Jakarta 12110, Indonesia Phone: 62 21 725 8063) || Developer: Jasa Marga (Persero) Tbk PT, Ms Truli Nawangsasi  - Head of Toll Road Business Development Division  (Address: Plaza Tol Taman Mini Indonesia Indah, Jalan Tol Jagorawi, Jakarta, Jakarta 13550, Indonesia Phone: 62 21 841 3630 / 841 3526 Email: jasmar@jasamarga.com) Bangun Tjipta Sarana PT, Mr Faturahman  - Project Director  (Address: Gedung Bangun Tjipta 6th Floor, Jalan Gatot Subroto Kav 54, Kuningan Timur, Setiabudi, Jakarta Selatan, Jakarta 12950, Indonesia Phone: 62 21 570 9091 / 5365 3078 / 5367 2244)', '?', '?', '?', 565600, 113120, '?', 'BID'),
+(26, 0, 215071002, '2016-03-08', 45, 1, 0, 0, 'D03:ROADWORKS - new (BAWEN - SOLO TOLL ROAD (SEMAR', '* Toll road construct (approx. 17.3 km length x 21 m width) * Concrete rigid pavement * Inner road shoulder / outer road shoulder * Earthworks * Surface marking * Traffic management', 'Tenders Called', 'July 2016', 'July 2017', 'Central Java', 'Salatiga', 'Bawen - Salatiga (STA 23+100 â€“ 40+400)', 'Infrastructure', 'Post tender', 'Master Planner: Atrya Swascipta Rekayasa PT, Mr Agus Rochimat  - Director  (Address: Jalan Cikapayang No. 11, Dago, Bandung, West Java 40124, Indonesia Phone: 62 22 421 4122 Email: global@atrya.co.id)', '0000-00-00', 'Developer: Kresna Kusuma Dyandra Marga PT - Waskita Toll Road, Mr Herwi Diakto  - Director  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com) ; Mr Purma Yoserizal  - Planning Manager  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com) ; Mr Dwi Pratikto  - Project Manager  (Address: Ruko Exclusive, Jalan Raden Inten Kav 21, Duren Sawit, Kalimalang, Jakarta Timur, Jakarta 11450, Indonesia Phone: 62 21 8661 5577 Email: kamilla.rambitan@gmail.com)', 'Design Engineer: Buana Archicon PT, Mr Arif Palurui  - Project Coordinator  (Address: Gedung Buana Lantai 2, Jalan Ciputat Raya No. 163 Pondok Pinang, Jakarta Selatan, Jakarta 12310, Indonesia Phone: 62 21 7581 6606 Email: buanarchie@yahoo.com)', 'Piling & Foundation Contractor: Berdikari Pondasi Perkasa PT, Mr Ir. Mahmud  - Project Manager  (Address: Jalan Pangeran Tubagus Angke No. 99, Jelambar, Jakarta Barat, Jakarta 11460, Indonesia Phone: 62 21 566 2756 / 566 4415 / 566 3952 Email: berdikari_pp@telkom.net) || Road Work Contractor: Waskita Karya (Persero) Tbk PT - Divisi Sipil, Mr Sigit Purwanto  - Project Manager  (Address: Gedung Waskita 5th Floor, Jalan M.T. Haryono Kavling No. 10, Jakarta, Jakarta 13340, Indonesia Phone: 62 21 819 8158 / 819 1617 Email: div-sipil@waskita.co.id) || Piling & Foundation Contractor: Grant Surya Multi Sarana PT, Mr Taufik Akbar  - Project Manager  (Address: Jalan Kapuk Kamal Muara No. 8D, Kompleks Kapuk Berlian, Penjaringan, Jakarta Utara, Jakarta 14470, Indonesia Phone: 62 21 5595 1180 Email: grant_surya@yahoo.com) || Road Work Contractor: Waskita Karya (Persero) Tbk PT - Divisi Sipil, Ms Diana Ulfi  - Staff Bagian Pengendalian  (Address: Gedung Waskita 5th Floor, Jalan M.T. Haryono Kavling No. 10, Jakarta, Jakarta 13340, Indonesia Phone: 62 21 819 8158 / 819 1617 Email: div-sipil@waskita.co.id)', 'Sub-Contractor: Waskita Beton Precast PT, Mr Edison Sianturi  - Project Manager  (Address: Graha Dirgantara Building 2nd Floor, Jalan Protokol Halim Perdana Kusuma No 8, Jakarta Timur, Jakarta 13610, Indonesia Phone: 62 21 2983 8020 / 2983 8021 / 2983 8022 / 2983 8023 Email: info@waskitaprecast.co.id)', 3771429, 754286, 'Qualified', 'BID'),
+(27, 3, 0, '2016-03-08', 45, 1, 0, 0, 'Project ABC', 'Project ABC site DEF', '', 'Mar 2016', 'Sep 2016', 'Sulawesi Utara', 'Manado', 'Site DEF ', '', '', 'PT ABC', '0000-00-00', '', '', '', '', 0, 0, '', ''),
+(28, 4, 0, '2016-03-08', 45, 8, 0, 0, 'Project ABD', 'Project ABD site EFG', '', 'Apr 2016', 'Sep 2016', '', '', '', '', '', '', '0000-00-00', '', '', '', '', 0, 0, '', ''),
+(29, 2, 0, '2016-03-08', 45, 1, 0, 0, 'Pemasangan Turap Kali Sekretaris', ' Pemasangan Turap Kali Sekretaris', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', 0, 0, '', ''),
+(30, 0, 0, '2016-03-08', 45, 1, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', 0, 0, '', ''),
+(31, 1, 0, '2016-03-08', 45, 1, 0, 0, 'Project A Team', 'Project A Team', '', '', '', '', '', '', '', '', '', '0000-00-00', '', '', '', '', 0, 0, '', ''),
+(32, 0, 148290002, '2016-03-17', 45, 1, 0, 0, 'ROADWORKS - upgrade (JALAN SENTUL - KISARAP ROAD I', '* Road upgrade (approx. 2.5 km length x 7 m width) * Concrete rigid pavement * Surface line marking', 'Tenders Called', '42461', 'December 2016', 'Banten', 'Serang', 'Kecamatan Cikeusal', 'Infrastructure', 'Post tender', 'architechdesigner', '0000-00-00', 'Government Implementing Agency: Dinas Pekerjaan Umum Kabupaten Serang, Mr Irawan Noor  - Acting as Head Officer  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363) || Tender Office: ; Mr Bambang  - Member of Tender Committee  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363)', 'eng_consultan', 'maincontractor', 'subcontractor', 45000, 9000, 'Good', 'No'),
+(33, 0, 148331002, '2016-03-17', 45, 3, 0, 0, 'ROADWORKS - upgrade (JALAN MALABAR - JUNTI ROAD IM', '* Road upgrade (approx. 2 km length x 7 m width) * Concrete rigid pavement * Surface line marking', 'Tenders Called', '42461', 'December 2016', 'Banten', 'Serang', 'Jalan Malabar - Junti, Kecamatan Bandung', 'Infrastructure', 'Post tender', 'architechdesigner', '0000-00-00', 'Government Implementing Agency: Dinas Pekerjaan Umum Kabupaten Serang, Mr Irawan Noor  - Acting as Head Officer  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363) || Tender Office: ; Mr Bambang  - Member of Tender Committee  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363)', 'eng_consultan', 'PT. UTOMO MARGO', 'CV. MARGO UTOMO', 45000, 9000, 'Good', 'No'),
+(34, 0, 148334002, '2016-03-17', 45, 1, 0, 0, 'ROADWORKS - upgrade (JALAN JAWILAN - PAMARAYAN ROA', '* Road upgrade (approx. 2 km length x 6 m width) * Concrete rigid pavement * Surface line marking', 'Tenders Called', '42461', 'December 2016', 'Banten', 'Serang', 'Jalan Jawilan - Pamarayan, Kecamatan Jawilan', 'Infrastructure', 'Post tender', 'architechdesigner', '0000-00-00', 'Government Implementing Agency: Dinas Pekerjaan Umum Kabupaten Serang, Mr Irawan Noor  - Acting as Head Officer  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363) || Tender Office: ; Mr Bambang  - Member of Tender Committee  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363)', 'eng_consultan', 'maincontractor', 'subcontractor', 4850, 970, 'Good', 'No'),
+(35, 0, 148385002, '2016-03-17', 45, 3, 0, 0, 'ROADWORKS - upgrade (JALAN SENTUL - SILEBU ROAD IM', '* Road construct (approx. 1.2 km length x 6 m width) * Hotmix asphalt overlay * Earthworks * Surface line marking', 'Tenders Called', '42461', 'December 2016', 'Banten', 'Kabupaten Serang', 'Jalan Sentul - Silebu, Kecamatan Kragilan', 'Infrastructure', 'Post tender', 'architechdesigner', '0000-00-00', 'Government Implementing Agency: Dinas Pekerjaan Umum Kabupaten Serang, Mr Irawan Noor  - Acting as Head Officer  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363) || Tender Office: ; Mr Bambang  - Member of Tender Committee  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363)', 'eng_consultan', 'maincontractor', 'subcontractor', 4850, 970, 'Good', 'No'),
+(36, 1, 148389002, '2016-03-17', 45, 1, 0, 0, 'ROADWORKS - upgrade (JALAN GORDA - WEWULUH ROAD IM', '* Road upgrade (approx. 1.5 km length x 7 m width) * Hotmix asphalt overlay * Surface marking', 'Tenders Called', '42461', 'December 2016', 'Banten', 'Kabupaten Serang', 'Jalan Gorda - Wewuluh, Kecamatan Kibin', 'Infrastructure', 'Post tender', 'architechdesigner', '0000-00-00', 'Government Implementing Agency: Dinas Pekerjaan Umum Kabupaten Serang, Mr Irawan Noor  - Acting as Head Officer  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363) || Tender Office: ; Mr Bambang  - Member of Tender Committee  (Address: Jalan Sama''un Bakri, Serang, Banten 42100, Indonesia Phone: 62 254 200 431 / 200 363)', 'eng_consultan', 'maincontractor', 'subcontractor', 7680, 1536, 'Good', 'No');
 
 -- --------------------------------------------------------
 
@@ -3294,7 +3370,7 @@ CREATE TABLE IF NOT EXISTS `tdat_models` (
   `description` text NOT NULL,
   `idcategory` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `tdat_models`
@@ -3303,7 +3379,10 @@ CREATE TABLE IF NOT EXISTS `tdat_models` (
 INSERT INTO `tdat_models` (`id`, `code`, `name`, `description`, `idcategory`) VALUES
 (1, 'MO1', 'Model 1', 'Description Model 1', 2),
 (2, 'MO2', 'Model 2', 'Description Model 2', 1),
-(3, 'MO3', 'Model 3', 'Description Model 3', 3);
+(3, 'MO3', 'Model 3', 'Description Model 3', 3),
+(4, 'EC210', 'VCE EXCAVATOR 20 TON', 'Excavator 20 Ton', 6),
+(5, 'A40', 'ARTICULATE DUMP TRUCK 40 TON', 'ARTICULATE DUMP TRUCK 40 TON', 5),
+(6, 'TIPPER', 'TIPPER', 'Tipper\n', 7);
 
 -- --------------------------------------------------------
 
@@ -3344,18 +3423,21 @@ CREATE TABLE IF NOT EXISTS `tdat_productprices` (
   `currency` varchar(10) NOT NULL,
   `active` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tdat_productprices`
 --
 
 INSERT INTO `tdat_productprices` (`id`, `idproduct`, `listprice`, `netprice`, `idcountry`, `idcity`, `validdatestart`, `validdateend`, `currency`, `active`) VALUES
-(1, 1, 112233, 112233, 69, 12, '2015-12-23', '2015-12-25', 'IDR', 'Nonactive'),
+(1, 1, 119000, 112233, 69, 12, '2015-12-23', '2015-12-25', 'IDR', 'Active'),
 (2, 1, 112233, 112233, 69, 9, '2016-01-07', '2016-01-29', 'IDR', 'Active'),
 (3, 3, 445544, 445544, 69, 36, '2016-01-08', '2016-01-26', 'IDR', 'Active'),
 (4, 3, 6677557, 66778899, 69, 21, '2016-01-04', '2016-01-31', 'IDR', 'Active'),
-(5, 2, 6677557, 66778899, 69, 16, '2015-12-22', '2015-12-23', 'IDR', 'Active');
+(5, 2, 6677557, 66778899, 69, 16, '2015-12-22', '2015-12-23', 'IDR', 'Active'),
+(6, 6, 600000000, 800000000, 69, 38, '2016-03-16', '2016-05-16', 'IDR', 'Active'),
+(7, 5, 2147483647, 2147483647, 69, 38, '2016-03-17', '2016-06-16', 'IDR', 'Active'),
+(8, 4, 1150000000, 1300000000, 69, 38, '2016-03-17', '2016-06-16', 'IDR', 'Active');
 
 -- --------------------------------------------------------
 
@@ -3379,7 +3461,7 @@ CREATE TABLE IF NOT EXISTS `tdat_productpromotions` (
 --
 
 INSERT INTO `tdat_productpromotions` (`id`, `idproduct`, `name`, `description`, `validdatestart`, `validdateend`, `active`) VALUES
-(1, 1, 'Promotion 1', 'Description Promotion 1', '2015-12-24', '2015-12-26', 'Active'),
+(1, 1, 'Promotion 1', 'Description Promotion 1', '2015-12-24', '2016-03-08', 'Active'),
 (2, 2, 'Promotion 2', 'Description Promotion 2', '2015-12-18', '2015-12-19', 'Active'),
 (3, 2, 'Promotion 3', 'Description Promotion 3', '2015-11-10', '2016-01-09', 'Active');
 
@@ -3396,7 +3478,7 @@ CREATE TABLE IF NOT EXISTS `tdat_products` (
   `specification` text NOT NULL,
   `idmodel` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `tdat_products`
@@ -3405,7 +3487,10 @@ CREATE TABLE IF NOT EXISTS `tdat_products` (
 INSERT INTO `tdat_products` (`id`, `name`, `uom`, `specification`, `idmodel`) VALUES
 (1, 'C&C 266 HP 6X2', 'unit', '<p><strong>DriveType:6x2</strong><br />Model&nbsp; : 2213257M3M1 Turbo Charging &amp; lntercooling<br />Engine : Sinotruk WD615.62 Euro ll Emission Standard<br />Horse Power&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 266 HP @220O rqm<br />Stroke &amp; Cylinder : 4 Stroke Direct lnjection, 6 Cylinder in Line<br />Transmission : HW ''19710T, Syncromesh 10 F / 2 R<br />Steering&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 2F8098<br />Frontaile&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : HF9/9Ton<br />Rear axle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: HC16 Ratio 5.73 / 16 Ton<br />Tyre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : 11.00-R 20 tube<br />With&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : Safety belt, A/C<br />Rear a*e cooling system<br />Engine Protector<br />Standard Cabin, Without Sheeper Bed<br />Colour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : White</p>', 2),
 (2, '371 TIPPER 6x4', 'unit', '<p>Model : ZZ3257N3847B Turbo Charging &amp; Intercooling<br />Engine : Sinotruk WD615.47 Euro II Emission Standard <br />Horse Power : 371 HP @ 2200 rpm according to DIN<br />Stroke &amp; Cylinder : 4 Stroke Direct Injection, 6 Cylinder in Line<br />Transmission : ZF 16S 1670, Syncromesh 10 F / 2 R<br />Steering : ZF8098<br />Front axle : HF9 / 9 Ton<br />Rear axle : HC16 Ratio 5.73 / 16 Ton<br />Tyre : 12.00-24 tube<br />With : Safety belt, A/C<br />Body size : 6000 &times; 2300 &times; 1500<br />Hyva Front Lift System<br />Rear axle cooling system<br />Engine Protector<br />Standard Cabin, Without Sheeper Bed<br />Total size : 8614 &times; 2496 &times; 3386 mm<br />Colour : White</p>', 3),
-(3, 'E42', 'unit', '<ol style="list-style-type: upper-roman;">\n<li>OPERATIONAL SPECIFICATION<ol style="list-style-type: lower-roman;">\n<li>Operating Weight (w/ Canopy) 9246 lb (4194 kg)<br />Bucket Size 0.12 cubic meter<br />Ground Pressure 4.3 psi (29.8 kPA)<br />Bucket Breakout Fource 9105 lb-f (45000 N)<br />Travel Speed - Low Range 1.8 mph (2.9 km/h)<br />Travel Speed - High Range 2.8 mph (4.5 km/h)<br />Slew Speed 9.0 rpm</li>\n</ol></li>\n<li>WORKING RANGE<ol style="list-style-type: lower-roman;">\n<li>Max Blade Depth 16.6" (421 mm) standard<br />Max Reach at Ground Level 207.0" (5259 mm) standard<br />Max Digging Depth 126.2 " (3205 mm)<br />Max Digging Height 205.2" (5212 mm)</li>\n</ol></li>\n<li>ENGINE &amp; ELECTRICAL<ol style="list-style-type: lower-roman;">\n<li>Engine Make/Model Kubota V2403-M-DI-E3B-BC-5 Diesel<br />Cooling Liquid (Propolyene Glycol &amp; water mix)<br />Horsepower @ rated RPM 41.8 HP (31.2 kW) @ 1400 rpm<br />Torque @ rated RPM 115.1 ft-lb (155.9 Nm) @ 1400 rpm<br />Fuel Tank Capacity 21.1 GAL (79.9 L)<br />Protection Feature Machine Shutdown &amp; Battery Rundown</li>\n</ol></li>\n<li>STANDARD FEATURE&nbsp;<ol style="list-style-type: lower-roman;">\n<li>TOPS / ROPS Canopy<br />Control Console Locks<br />Dozer Blade - With Float<br />Engine/Hydraulic Monitor (w/ Shutdown)<br />Auxiliary Hydraulic (w/ Quick Couplers)<br />Control Pattern Selector Valve</li>\n</ol></li>\n</ol>\n<p>&nbsp;</p>', 1);
+(3, 'E42', 'unit', '<ol style="list-style-type: upper-roman;">\n<li>OPERATIONAL SPECIFICATION<ol style="list-style-type: lower-roman;">\n<li>Operating Weight (w/ Canopy) 9246 lb (4194 kg)<br />Bucket Size 0.12 cubic meter<br />Ground Pressure 4.3 psi (29.8 kPA)<br />Bucket Breakout Fource 9105 lb-f (45000 N)<br />Travel Speed - Low Range 1.8 mph (2.9 km/h)<br />Travel Speed - High Range 2.8 mph (4.5 km/h)<br />Slew Speed 9.0 rpm</li>\n</ol></li>\n<li>WORKING RANGE<ol style="list-style-type: lower-roman;">\n<li>Max Blade Depth 16.6" (421 mm) standard<br />Max Reach at Ground Level 207.0" (5259 mm) standard<br />Max Digging Depth 126.2 " (3205 mm)<br />Max Digging Height 205.2" (5212 mm)</li>\n</ol></li>\n<li>ENGINE &amp; ELECTRICAL<ol style="list-style-type: lower-roman;">\n<li>Engine Make/Model Kubota V2403-M-DI-E3B-BC-5 Diesel<br />Cooling Liquid (Propolyene Glycol &amp; water mix)<br />Horsepower @ rated RPM 41.8 HP (31.2 kW) @ 1400 rpm<br />Torque @ rated RPM 115.1 ft-lb (155.9 Nm) @ 1400 rpm<br />Fuel Tank Capacity 21.1 GAL (79.9 L)<br />Protection Feature Machine Shutdown &amp; Battery Rundown</li>\n</ol></li>\n<li>STANDARD FEATURE&nbsp;<ol style="list-style-type: lower-roman;">\n<li>TOPS / ROPS Canopy<br />Control Console Locks<br />Dozer Blade - With Float<br />Engine/Hydraulic Monitor (w/ Shutdown)<br />Auxiliary Hydraulic (w/ Quick Couplers)<br />Control Pattern Selector Valve</li>\n</ol></li>\n</ol>\n<p>&nbsp;</p>', 1),
+(4, 'EC210 BLC', 'UNIT', '<p><br />&nbsp;I.PERFORMANCE<br />&nbsp;&nbsp;&nbsp; Bucket Capacity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.92 cu meter (GP Bucket)<br />&nbsp;&nbsp;&nbsp; Operating Weight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 21,325 kg<br />&nbsp;&nbsp;&nbsp; Arm Length / Boom Length&nbsp;&nbsp; 2.9 m / 5.7 m<br />&nbsp;&nbsp;&nbsp; &nbsp;Max Swing Speed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;11.6 rpm (w/ automatic swing holding)<br />&nbsp;II.ENGINE&nbsp;&nbsp;&nbsp;&nbsp;VOLVO D6E Turbocharged &amp; Intercooled<br />&nbsp;&nbsp;&nbsp; &nbsp;Power (SAE J1995 Gross)&nbsp;&nbsp;&nbsp; 123 kW (167 HP) @ 1800 rpm<br />&nbsp;&nbsp;&nbsp;&nbsp; Torque&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Max 730 Nm @ 1350 rpm<br />&nbsp;&nbsp;&nbsp; &nbsp;Feature&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Automatic Idling System<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Electric Engine Shut Off<br />&nbsp;III.HYDRAULIC SYSTEM<br />&nbsp;&nbsp; &nbsp;Main Pump&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Max flow 2 x 200 l/min<br />&nbsp;&nbsp;&nbsp; Feature&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Contronic &amp; Auto-Sensing Work Mode<br />&nbsp;IV.UNDERCARRIAGE &amp; TRACKS<br />&nbsp;&nbsp;&nbsp; Shoe Width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;800 mm Triple Grouser<br />&nbsp;&nbsp;&nbsp; Ground Pressure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.34 kg/cm3<br />&nbsp;&nbsp; &nbsp;Track Length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;4170 mm (greased &amp; sealed chain)<br />&nbsp;V.SERVICES<br />&nbsp;&nbsp;&nbsp; Fuel Tank&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 350 liter<br />&nbsp;&nbsp;&nbsp; Fuel Filler Pump&nbsp;Standard&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 35 l / min<br />&nbsp;VI.ELECTRONIC CONTROL SYSTEMAdvanced Mode Control<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; "Power Max" Mode<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Self Diagnostic System</p>', 4),
+(5, 'A40F', 'UNIT', '<p>I.ENGINE :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Engine Type : Volvo D16FA<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 Cyld with Turbo Charger Diesel Engine<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Directed Injection, Electronic Control<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Eng Retarder&nbsp; with VEB and EPG<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Power: (SAEJ 1349) 347 KW /465 HP<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Max. Torque. 2500 Nm/at 1050 RPM<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Displacement 16.1 L<br />II.DRIVE TRAIN :&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Transmission type PT 2519<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Volvo Power Tronic Planettery 9F/3R.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dropbox IL2, with diff lock<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Axle Volvo type ARB H35/H40 and AWB<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Build in Automatic Track Control (ATC)<br />III.ELECTRIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Voltage 24 Volt (2X12Volt)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Battery 2X170AH, 80A Alternator<br />IV.HYDRAULIC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Steering, Dumping,and&nbsp; Fan cooling<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Working Press.250 Bar<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyd piston Pump No. 5 + 1 pump.<br />V.SERVICE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Tires tube less 29.5 X R25&nbsp; E-3<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Cabin with ROPS and FOPS<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AC and Radio CD player<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GPS control by Volvo Care track 3 years<br />VI.PERFORMANCE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Body Heaped 2:1 : 24 M3<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Load Capacity : 39.000 Kg<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Load Dump Brake is Volvo patented<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Steering emergency ( ISO 5010 )</p>', 5),
+(6, 'TIPPER 6X4  290 HP', 'UNIT', '<p>I.Basic Specification<br />&nbsp;&nbsp; Drive Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 &times; 4&nbsp; GVW 41000 kg<br />&nbsp; &nbsp;Model&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ZZ3257M3641<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Turbo Charging &amp; Intercooling<br />&nbsp;&nbsp; Engine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sinotruk WD615.87<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Euro II Emission Standard<br />&nbsp;&nbsp; Maximum output&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 290 HP at 2200 rpm<br />&nbsp; &nbsp;Maximum torque&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1160Nm at 1100-1600 rpm<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Bore&nbsp; 126mm, Stroke&nbsp; 130mm<br />&nbsp; &nbsp;Displacement&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 9.726L<br />&nbsp; &nbsp;Transmission&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; HW 19710T, Synchromesh 10 F / 2 R<br />&nbsp;&nbsp; Steering&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; ZF 8089<br />&nbsp; &nbsp;Front axle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; HF9 - 9 ton<br />&nbsp; &nbsp;Rear axle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; HC16 - 16 ton, Ratio 4.8<br />&nbsp; &nbsp;Tyre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; 11.00-20 radial tyre<br />&nbsp;&nbsp; With&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; Safety belt, A/C<br />&nbsp; &nbsp;Body size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; 5600 &times; 2300 &times; 1500 mm<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;Hyva Front Lift System<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Engine Protector<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Standard Cabin, Without Sleeper Bed<br />&nbsp; &nbsp;Overall Dimension&nbsp;&nbsp;&nbsp; 8214 &times; 2496 &times; 3386 mm<br />&nbsp;&nbsp; Colour&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; White</p>\n<p>&nbsp;</p>', 6);
 
 -- --------------------------------------------------------
 
@@ -3417,29 +3502,39 @@ CREATE TABLE IF NOT EXISTS `tdat_prospectaccessories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idaccessories` int(11) NOT NULL,
   `idprospect` int(11) NOT NULL,
+  `accquantity` int(11) NOT NULL DEFAULT '1',
+  `is_display_pdf` enum('Y','N') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Dumping data for table `tdat_prospectaccessories`
 --
 
-INSERT INTO `tdat_prospectaccessories` (`id`, `idaccessories`, `idprospect`) VALUES
-(3, 3, 1),
-(4, 4, 1),
-(5, 2, 4),
-(6, 4, 4),
-(7, 3, 4),
-(15, 1, 1),
-(16, 2, 12),
-(17, 3, 12),
-(18, 2, 18),
-(19, 3, 18),
-(20, 4, 18),
-(21, 2, 19),
-(22, 3, 10),
-(23, 3, 20),
-(24, 1, 20);
+INSERT INTO `tdat_prospectaccessories` (`id`, `idaccessories`, `idprospect`, `accquantity`, `is_display_pdf`) VALUES
+(3, 3, 1, 1, 'Y'),
+(4, 4, 1, 1, 'Y'),
+(5, 2, 4, 1, 'Y'),
+(6, 4, 4, 1, 'Y'),
+(7, 3, 4, 1, 'Y'),
+(15, 1, 1, 1, 'Y'),
+(16, 2, 12, 1, 'Y'),
+(17, 3, 12, 1, 'Y'),
+(18, 2, 18, 1, 'Y'),
+(19, 3, 18, 1, 'Y'),
+(20, 4, 18, 1, 'Y'),
+(21, 2, 19, 1, 'Y'),
+(22, 3, 10, 1, 'Y'),
+(23, 3, 20, 1, 'Y'),
+(24, 1, 20, 1, 'Y'),
+(25, 1, 22, 1, 'N'),
+(26, 3, 22, 1, 'Y'),
+(27, 2, 23, 3, 'N'),
+(28, 3, 23, 3, 'Y'),
+(30, 1, 23, 2, 'N'),
+(31, 4, 23, 1, 'Y'),
+(32, 2, 26, 2, 'Y'),
+(33, 3, 26, 2, 'Y');
 
 -- --------------------------------------------------------
 
@@ -3467,7 +3562,7 @@ CREATE TABLE IF NOT EXISTS `tdat_prospectalls` (
   `incentiveno` varchar(100) NOT NULL,
   `idstage` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `tdat_prospectalls`
@@ -3477,9 +3572,14 @@ INSERT INTO `tdat_prospectalls` (`id`, `idprospect`, `customerpono`, `podate`, `
 (1, 1, '12345', '2016-01-23', '2016-01-31', 200000, 'Test', 'BCA', 'Leasing Company', '1010', 10000, '0000-00-00', '0000-00-00', '', '', '', '', 6),
 (2, 5, '2345', '2016-01-24', '2016-02-04', 0, 'Test', 'Test-ok', 'IBF', 'IBF/01', 100000000, '0000-00-00', '0000-00-00', '', '', '', '', 0),
 (4, 4, '456', '2016-01-25', '2016-02-01', 10000, 'Test', 'Mandiri', 'Leasing Company A', '1125', 800000, '0000-00-00', '0000-00-00', '', '', '', '', 6),
-(7, 6, '54321', '2016-01-26', '0000-00-00', 0, '', '', 'Leasing Company A', '123', 900, '0000-00-00', '0000-00-00', '', '', '', '', 6),
-(10, 7, '1223', '2016-01-28', '0000-00-00', 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', '', 4),
-(17, 9, '12222', '2016-02-23', '2016-02-17', 90, 'rrrr', 'BCA', 'Leasing Company B', '1010', 90000, '2016-02-10', '2016-02-29', 'Delivery Vendor', '10', '101111', '10', 7);
+(7, 6, '54321', '2016-01-26', '0000-00-00', 0, '', '', 'Leasing Company A', '123', 900, '0000-00-00', '0000-00-00', 'test', '123', '12', '99', 7),
+(10, 7, '1223', '2016-01-28', '0000-00-00', 0, '', '', 'TEST', '123', 100000000, '0000-00-00', '0000-00-00', 'test', '123', '12', '123456', 7),
+(17, 9, '12222', '2016-02-23', '2016-02-17', 90, 'rrrr', 'BCA', 'Leasing Company B', '1010', 90000, '2016-02-10', '2016-02-29', 'Delivery Vendor', '10', '101111', '10', 7),
+(18, 23, '909012', '2016-03-16', '2016-03-31', 100000000, 'BNI', 'BNI', 'Leasing dept', '90', 12, '0000-00-00', '0000-00-00', 'Test', '321', '3211', '3212', 7),
+(19, 26, 'PO 021/001/16', '2016-03-08', '2016-03-08', 10000000, '', 'BCA', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', '', 5),
+(20, 26, 'PO 021/001/16', '2016-03-08', '2016-03-14', 100000, 'cash test', 'name test', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', '', 0),
+(21, 12, '123', '2016-03-15', '0000-00-00', 0, '', '', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', '', 4),
+(22, 27, 'ABY/PO/HE/16/03/0001', '2016-03-17', '2016-03-17', 1, 'cash test', 'name test', '', '', 0, '0000-00-00', '0000-00-00', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -3539,7 +3639,19 @@ CREATE TABLE IF NOT EXISTS `tdat_prospectpromotions` (
   `idpromotion` int(11) NOT NULL,
   `idprospect` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `tdat_prospectpromotions`
+--
+
+INSERT INTO `tdat_prospectpromotions` (`id`, `idpromotion`, `idprospect`) VALUES
+(1, 1, 23),
+(2, 2, 23),
+(4, 3, 24),
+(5, 2, 24),
+(7, 2, 8),
+(8, 2, 26);
 
 -- --------------------------------------------------------
 
@@ -3585,7 +3697,7 @@ CREATE TABLE IF NOT EXISTS `tdat_prospects` (
   `idsegment` int(11) NOT NULL,
   `odds` varchar(500) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `tdat_prospects`
@@ -3595,22 +3707,32 @@ INSERT INTO `tdat_prospects` (`id`, `idsuspect`, `idsuspectdetail`, `quotationno
 (1, 2, 1, '', '2015-12-03', 1, 4, 1, 3, 2, '', '0000-00-00', '0000-00-00', '', 6, '0000-00-00', 0, 15, 2, '', 12, '', 0, 'Rental', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 3, '50'),
 (4, 2, 4, '', '2015-12-06', 1, 4, 1, 3, 2, '', '0000-00-00', '0000-00-00', '', 6, '0000-00-00', 0, 15, 1, '', 11, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 5, '50'),
 (5, 3, 7, '', '2016-01-19', 45, 8, 45, 1, 3, '', '0000-00-00', '0000-00-00', '', 5, '0000-00-00', 0, 15, 1, '', 20, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 4, '25'),
-(6, 4, 8, '', '2016-01-26', 2, 5, 2, 1, 4, '', '0000-00-00', '0000-00-00', '', 6, '0000-00-00', 0, 15, 1, '', 2, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25'),
-(7, 5, 9, '', '2016-01-26', 2, 3, 2, 4, 4, '', '0000-00-00', '0000-00-00', '', 4, '0000-00-00', 0, 15, 3, '', 5, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 2, '25'),
+(6, 4, 8, '', '2016-01-26', 2, 5, 2, 1, 4, '', '0000-00-00', '0000-00-00', '', 7, '0000-00-00', 0, 15, 1, '', 2, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25'),
+(7, 5, 9, '', '2016-01-26', 2, 3, 2, 4, 4, '', '0000-00-00', '0000-00-00', '', 7, '0000-00-00', 0, 15, 3, '', 5, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 2, '25'),
 (8, 6, 10, '', '2016-01-31', 2, 2, 2, 1, 1, '', '2016-01-31', '2016-02-05', 'IDR', 8, '0000-00-00', 0, 15, 1, '', 4, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', 'Test', 2, 'ww', 1, '0'),
 (9, 7, 11, '', '2016-02-01', 2, 3, 2, 1, 5, '', '0000-00-00', '0000-00-00', '', 7, '0000-00-00', 0, 15, 1, '', 12, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 4, '75'),
-(10, 8, 12, '01/01/01', '2016-02-11', 45, 2, 45, 1, 6, '', '0000-00-00', '0000-00-00', 'IDR', 3, '0000-00-00', 0, 15, 1, '', 2, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', 'CUST GALAK', 0, '0000', 1, '25'),
+(10, 8, 12, '01/01/01', '2016-02-11', 45, 2, 45, 1, 6, '', '0000-00-00', '0000-00-00', 'IDR', 8, '0000-00-00', 0, 15, 1, '', 2, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', 'CUST GALAK', 0, '0000', 1, '25'),
 (11, 9, 13, '', '2016-02-12', 2, 1, 2, 2, 7, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 1, '', 10, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '50'),
-(12, 10, 15, '6CC/KSR /BR1 -54321 /02-2016', '2016-02-15', 2, 6, 2, 1, 8, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 1, '', 10, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '50'),
+(12, 10, 15, '6CC/KSR /BR1 -54321 /02-2016', '2016-02-15', 2, 6, 2, 1, 8, '', '0000-00-00', '0000-00-00', '', 4, '0000-00-00', 0, 15, 1, '', 10, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', 'Test', 2, '12', 1, '50'),
 (13, 2, 6, '4CC/CCI /BR3 -12345 /02-2016', '2016-02-15', 45, 4, 1, 3, 2, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 3, '', 16, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 6, '50'),
-(14, 9, 14, '1CC/INTI /BR2 -54321 /02-2016', '2016-02-15', 45, 1, 2, 2, 7, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 3, '', 5, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 2, '50'),
+(14, 9, 14, '1CC/INTI /BR2 -54321 /02-2016', '2016-02-15', 45, 1, 2, 2, 7, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 3, '', 5, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 2, '50'),
 (15, 10, 16, '6CC/KSR /BR1 -54321 /02-2016', '2016-02-15', 45, 6, 2, 1, 8, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 2, '', 10, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '50'),
 (16, 2, 5, '4CC/CCI /BR3 -12345 /02-2016', '2016-02-15', 45, 4, 1, 3, 2, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 2, '', 15, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 2, '50'),
 (17, 7, 17, '3CC/IPW /BR1 -54321 /02-2016', '2016-02-15', 45, 3, 2, 1, 5, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 2, '', 10, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 2, '75'),
 (18, 11, 18, '8CC/INTA /BR1 -54321 /02-2016', '2016-02-15', 2, 8, 2, 1, 11, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 1, '', 5, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25'),
 (19, 12, 19, '3CC/IPW /BR1 -11111 /02-2016', '2016-02-16', 45, 3, 45, 1, 12, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 1, '', 1, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '50'),
 (20, 13, 20, '1CC/INTI /BR1 -AA/II-2016', '2016-02-16', 45, 1, 45, 1, 14, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 1, '', 10, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25'),
-(21, 14, 21, '2CC/IPPS /BR2 -AA/II-2016', '2016-02-22', 2, 2, 45, 2, 15, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 3, '', 2, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25');
+(21, 14, 21, '2CC/IPPS /BR2 -AA/II-2016', '2016-02-22', 2, 2, 45, 2, 15, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 3, '', 2, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25'),
+(22, 15, 22, '1CC/INTI /BR1 -AA/II-2016', '2016-02-29', 2, 1, 45, 1, 10, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 3, '', 2, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 2, '25'),
+(23, 16, 23, '1CC/INTI /BR1 -PM/III-2016', '2016-03-07', 2, 1, 2, 1, 17, '', '2016-03-07', '2016-03-29', 'IDR', 7, '0000-00-00', 0, 16, 1, '', 4, '', 2, 'New', '', '', '', '', '', '2016-03-08', '2016-03-31', 'TEST', 2, 'WW', 1, '25'),
+(24, 17, 24, '3CC/IPW /BR1 -AA/III-2016', '2016-03-08', 45, 3, 45, 1, 19, '', '0000-00-00', '0000-00-00', 'IDR', 3, '0000-00-00', 0, 16, 1, '', 1, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', 'HGHGFJHF', 0, '1234', 1, '25'),
+(25, 18, 25, '3CC/IPW /BR1 -AA/III-2016', '2016-03-08', 45, 3, 45, 1, 20, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 1, '', 1, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25'),
+(26, 19, 26, '2CC/IPPS /BR3 -AA/III-2016', '2016-03-08', 45, 2, 45, 3, 22, '', '0000-00-00', '0000-00-00', '', 5, '0000-00-00', 0, 15, 2, '', 1, '', 200000000, '', '', '', '', '', '', '0000-00-00', '0000-00-00', 'type cust', 0, '123', 0, '25'),
+(27, 20, 27, '3CC/IPW /BR1 -AA/III-2016', '2016-03-17', 45, 3, 45, 1, 24, '', '0000-00-00', '0000-00-00', '', 5, '0000-00-00', 0, 15, 6, '', 1, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '1114', 0, 'IPW-2016', 1, '25'),
+(28, 21, 28, '8/IPW /BR2 -AA/III-2016', '2016-03-18', 45, 3, 45, 2, 25, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 1, '', 10, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25'),
+(29, 22, 29, '005/IPPS /BR4 -AA/III-2016', '2016-03-18', 45, 2, 45, 4, 27, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 2, '', 10, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '50'),
+(30, 22, 29, '006/IPPS /BR4 -AA/III-2016', '2016-03-21', 45, 2, 45, 4, 27, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 2, '', 10, '', 0, 'Used', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '50'),
+(31, 23, 30, '003/KSR /BR1 -PM/III-2016', '2016-03-22', 2, 6, 2, 1, 18, '', '0000-00-00', '0000-00-00', '', 3, '0000-00-00', 0, 15, 5, '', 10, '', 0, 'New', '', '', '', '', '', '0000-00-00', '0000-00-00', '', 0, '', 1, '25');
 
 -- --------------------------------------------------------
 
@@ -3624,17 +3746,28 @@ CREATE TABLE IF NOT EXISTS `tdat_quotationnotes` (
   `quotation_id` int(11) NOT NULL,
   `quotation_desc` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
 
 --
 -- Dumping data for table `tdat_quotationnotes`
 --
 
 INSERT INTO `tdat_quotationnotes` (`id`, `prospect_id`, `quotation_id`, `quotation_desc`) VALUES
-(6, 1, 3, '20% Down Payment & 80% Cash or thru Leasing Test'),
-(3, 20, 2, 'Ready stock Jakarta (Subject to Prior Sales) Test'),
-(8, 20, 5, '25 days'),
-(7, 12, 4, NULL);
+(12, 22, 4, '12 months / 2500 hours whichever comes first'),
+(3, 20, 2, 'Ready stock Jakarta (Subject to Prior Sales)ds'),
+(13, 22, 5, '15 days'),
+(11, 22, 3, '20% Down Payment & 80% Cash or thru Leasing'),
+(7, 12, 4, '12 months / 2500 hours whichever comes first'),
+(15, 23, 2, 'Ready stock Jakarta (Subject to Prior Sales)ds'),
+(16, 23, 4, '12 months / 2500 hours whichever comes first'),
+(14, 23, 1, 'The price offered is LDP Jakarta, include 10% VAT'),
+(18, 12, 2, 'Ready stock Jakarta (Subject to Prior Sales)ds'),
+(17, 12, 1, 'The price offered is LDP Jakarta, include 10% VAT'),
+(23, 26, 2, 'Ready stock Jakarta (Subject to Prior Sales)ds'),
+(21, 11, 2, 'Ready stock Jakarta (Subject to Prior Sales)ds'),
+(20, 14, 1, 'The price offered is LDP Jakarta, include 10% VAT'),
+(31, 24, 1, 'The price offered is LDP Jakarta, include 10% VAT'),
+(27, 26, 4, '12 months / 2500 hours whichever comes first');
 
 -- --------------------------------------------------------
 
@@ -3648,7 +3781,7 @@ CREATE TABLE IF NOT EXISTS `tdat_quotations` (
   `idquotationtext` int(11) NOT NULL,
   `description` varchar(5000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
 
 --
 -- Dumping data for table `tdat_quotations`
@@ -3673,7 +3806,17 @@ INSERT INTO `tdat_quotations` (`id`, `idprospect`, `idquotationtext`, `descripti
 (18, 18, 0, ''),
 (19, 19, 0, ''),
 (20, 20, 0, ''),
-(21, 21, 0, '');
+(21, 21, 0, ''),
+(22, 22, 0, ''),
+(23, 23, 0, ''),
+(24, 24, 0, ''),
+(25, 25, 0, ''),
+(26, 26, 0, ''),
+(27, 27, 0, ''),
+(28, 28, 0, ''),
+(29, 29, 0, ''),
+(30, 30, 0, ''),
+(31, 31, 0, '');
 
 -- --------------------------------------------------------
 
@@ -3686,7 +3829,7 @@ CREATE TABLE IF NOT EXISTS `tdat_quotationtext` (
   `name` varchar(100) NOT NULL,
   `description` varchar(5000) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `tdat_quotationtext`
@@ -3697,7 +3840,10 @@ INSERT INTO `tdat_quotationtext` (`id`, `name`, `description`) VALUES
 (2, 'Delivery', 'Ready stock Jakarta (Subject to Prior Sales)'),
 (3, 'Payment', '20% Down Payment & 80% Cash or thru Leasing'),
 (4, 'Warranty', '12 months / 2500 hours whichever comes first'),
-(5, 'Validity', '15 days');
+(5, 'Validity', '15 days'),
+(6, 'WARRANTY', 'Unlimited Hours or one (1) Year, which ever comes first'),
+(7, 'TRAINING', 'Free Operational & Maintenance Training'),
+(8, 'SERVICE', 'Free periodic service inspection within 12 months');
 
 -- --------------------------------------------------------
 
@@ -3747,7 +3893,15 @@ CREATE TABLE IF NOT EXISTS `tdat_salesactivities` (
   `visitresult` text NOT NULL,
   `nextaction` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `tdat_salesactivities`
+--
+
+INSERT INTO `tdat_salesactivities` (`id`, `idvisitschedule`, `idlead`, `idsuspect`, `idprospect`, `iduser`, `idcustomer`, `datetimestart`, `datetimeend`, `idvisitpurpose`, `visitresult`, `nextaction`) VALUES
+(1, 1, 0, 0, 0, 45, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'sssss', 'aaaaabbb'),
+(2, 1, 0, 0, 26, 45, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'sssss', 'aaaaabbb');
 
 -- --------------------------------------------------------
 
@@ -3966,7 +4120,7 @@ CREATE TABLE IF NOT EXISTS `tdat_suspectdetails` (
   `idsegment` int(11) NOT NULL,
   `stage` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Dumping data for table `tdat_suspectdetails`
@@ -3984,14 +4138,23 @@ INSERT INTO `tdat_suspectdetails` (`id`, `idproduct`, `idsuspect`, `quantity`, `
 (11, 1, 7, 12, 'unit', 'New', 6, '75', 4, 'prospect'),
 (12, 1, 8, 2, 'unit', 'New', 6, '25', 1, 'prospect'),
 (13, 1, 9, 10, 'unit', 'New', 6, '50', 1, 'prospect'),
-(14, 3, 9, 5, 'unit', 'Used', 6, '50', 2, 'prospect'),
+(14, 3, 9, 5, 'unit', 'New', 6, '50', 2, 'prospect'),
 (15, 1, 10, 10, 'unit', 'New', 6, '50', 1, 'prospect'),
 (16, 2, 10, 10, 'unit', 'New', 6, '50', 1, 'prospect'),
 (17, 2, 7, 10, 'unit', 'Used', 6, '75', 2, 'prospect'),
 (18, 1, 11, 5, 'unit', 'New', 6, '25', 1, 'prospect'),
 (19, 1, 12, 1, 'unit', 'New', 9, '50', 1, ''),
 (20, 1, 13, 10, 'unit', 'New', 6, '25', 1, 'prospect'),
-(21, 3, 14, 2, 'unit', 'New', 6, '25', 1, 'prospect');
+(21, 3, 14, 2, 'unit', 'New', 6, '25', 1, 'prospect'),
+(22, 3, 15, 2, 'unit', 'New', 6, '25', 2, 'prospect'),
+(23, 1, 16, 4, 'unit', 'New', 6, '25', 1, 'prospect'),
+(24, 1, 17, 1, 'unit', 'New', 6, '25', 1, 'prospect'),
+(25, 1, 18, 1, 'unit', 'New', 6, '25', 1, 'prospect'),
+(26, 2, 19, 1, 'unit', '', 13, '25', 0, 'prospect'),
+(27, 6, 20, 1, 'UNIT', 'New', 8, '25', 1, 'prospect'),
+(28, 1, 21, 10, 'unit', 'New', 6, '25', 1, 'prospect'),
+(29, 2, 22, 10, 'unit', 'Used', 14, '50', 1, 'prospect'),
+(30, 5, 23, 10, 'UNIT', 'New', 6, '25', 1, 'prospect');
 
 -- --------------------------------------------------------
 
@@ -4036,7 +4199,7 @@ CREATE TABLE IF NOT EXISTS `tdat_suspects` (
   `customerplanned` varchar(1000) NOT NULL,
   `idcustomer` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
 
 --
 -- Dumping data for table `tdat_suspects`
@@ -4049,14 +4212,22 @@ INSERT INTO `tdat_suspects` (`id`, `createddate`, `createdby`, `idcompany`, `idb
 (5, '2016-01-26', '2', 3, 4, 7, 6, 2, '', 4, '', 4),
 (6, '2016-01-31', '2', 2, 1, 4, 7, 2, '', 8, '', 1),
 (7, '2016-02-01', '2', 3, 1, 10, 8, 2, '', 3, '', 5),
-(8, '2016-02-11', '45', 2, 1, 14, 10, 45, '', 3, '', 6),
+(8, '2016-02-11', '45', 2, 1, 14, 10, 45, '', 8, '', 6),
 (9, '2016-02-12', '2', 1, 2, 8, 11, 2, '', 3, '', 7),
-(10, '2016-02-15', '2', 6, 1, 11, 12, 2, '', 3, '', 8),
+(10, '2016-02-15', '2', 6, 1, 11, 12, 2, '', 4, '', 8),
 (11, '2016-02-15', '2', 8, 1, 15, 16, 2, '', 3, 'Agung Sedayu Grup', 11),
 (12, '2016-02-16', '45', 3, 1, 18, 17, 45, '', 3, '', 12),
 (13, '2016-02-16', '45', 1, 1, 19, 18, 45, '', 3, '', 14),
 (14, '2016-02-17', '45', 2, 2, 9, 19, 45, '', 3, '', 15),
-(15, '2016-02-15', '45', 1, 1, 12, 15, 45, '', 2, '', 10);
+(15, '2016-02-15', '45', 1, 1, 12, 15, 45, '', 3, '', 10),
+(16, '2016-03-07', '2', 1, 1, 21, 22, 2, '', 4, 'yes', 17),
+(17, '2016-03-08', '45', 3, 1, 23, 24, 45, '', 3, '', 19),
+(18, '2016-03-08', '45', 3, 1, 24, 26, 45, '', 3, '', 20),
+(19, '2016-03-08', '45', 2, 3, 28, 28, 45, '', 8, '', 22),
+(20, '2016-03-16', '45', 3, 1, 32, 32, 45, '', 4, '', 24),
+(21, '2016-03-16', '45', 3, 2, 33, 33, 45, '', 3, '', 25),
+(22, '2016-03-16', '45', 2, 4, 35, 36, 45, '', 3, '', 27),
+(23, '2016-03-22', '2', 6, 1, 22, 23, 2, '', 3, '', 18);
 
 -- --------------------------------------------------------
 
@@ -4093,12 +4264,12 @@ CREATE TABLE IF NOT EXISTS `tdat_users` (
 
 INSERT INTO `tdat_users` (`id`, `nik`, `username`, `password`, `firstname`, `lastname`, `gender`, `birthdate`, `phone`, `mobile`, `email`, `pinbbm`, `idcompany`, `idbranch`, `idrole`, `idcountry`, `idcity`, `picture`, `active`) VALUES
 (1, '12345', 'mulki12345', 'mulki12', 'Mulki', 'Fadhiylah', 'Male', '1990-05-06', '1234567', '12345678900', 'mulki.fadhiylah.mcs@gmail.com', '22fde44', 6, 1, 7, 69, 6, 'assets/pictures/users/mulki12345.jpg', 'Active'),
-(2, '54321', 'paramitha54321', 'mitamita', 'Paramitha', 'Megarani', 'Female', '1992-05-11', '7654321', '00987654321', 'paramita@ex.com', '2rrr457', 1, 3, 2, 69, 8, 'assets/pictures/users/paramitha54321.jpg', 'Active'),
+(2, '54321', 'paramitha54321', 'mitamita', 'Paramitha', 'Megarani', 'Female', '1992-05-11', '7654321', '00987654321', 'paramithamegarani@gmail.com', '2rrr457', 1, 3, 2, 69, 8, 'assets/pictures/users/paramitha54321.jpg', 'Active'),
 (45, '11111', 'admin11111', 'admin', 'Admin', 'Admin', 'Female', '1990-01-30', '111111', '111111', 'admin@admin.admin', '2ff22ff', 8, 1, 2, 69, 17, 'assets/pictures/users/admin11111.jpg', 'Active'),
 (46, '333333', 'system333333', 'asd123', 'System', 'System', 'Male', '2008-12-28', '123456', '12345678900', 'asdf@asd.ad', '22fde44', 1, 1, 2, 69, 15, 'assets/pictures/users/system333333.', 'Active'),
 (47, '112233', 'generals112233', '12345', 'Generals', 'Generals', 'Male', '2008-12-29', '123123', '123123123', 'generals@generals.generals', '123ff', 1, 2, 1, 69, 20, 'assets/pictures/users/generals112233.', 'Active'),
 (48, '001', 'head of001', 'johndoe', 'Head of', 'Branch', 'Male', '1960-02-03', '8990', '3', 'erwe@fff.com', '2ef4599d', 2, 1, 3, 69, 23, 'assets/pictures/users/john001.', 'Active'),
-(49, '002', 'sales002', 'sales', 'Sales', 'manager', 'Female', '2010-02-02', '8003311', '0876666', '6455467dfhhh@gg.kk', '2we24d33', 3, 3, 4, 69, 76, 'assets/pictures/users/sales002.', 'Active'),
+(49, '002', 'sales002', 'sales', 'Head of', 'Branch', 'Male', '2010-02-02', '8003311', '0876666', 'debjyoti@okwebsolution.com', '2we24d33', 3, 1, 3, 69, 76, 'assets/pictures/users/sales002.', 'Active'),
 (50, '003', 'ho003', 'sales', 'HO', 'Director', 'Male', '1974-07-18', '4534545', '666666', 'sdfsds@fff.vom', '454rdw', 3, 5, 5, 69, 93, 'assets/pictures/users/ho003.', 'Active'),
 (51, '004', 'marketing004', 'marketing', 'Marketing', 'Person', 'Female', '1979-01-01', '2323323', '454566788', 'gogogoi@ymail.com', '343sdf554', 4, 2, 6, 69, 79, 'assets/pictures/users/marketing004.', 'Active'),
 (52, '005', 'holding005', 'holding', 'Holding', 'Person', 'Female', '1975-07-24', '3434343', '5667788', 'erwe@fferrrcom', 'dfdf33', 4, 3, 8, 69, 73, 'assets/pictures/users/holding005.', 'Active'),
@@ -4142,7 +4313,7 @@ CREATE TABLE IF NOT EXISTS `tdat_visitschedules` (
   `idvisitpurpose` int(11) NOT NULL,
   `idstage` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tdat_visitschedules`
@@ -4151,7 +4322,28 @@ CREATE TABLE IF NOT EXISTS `tdat_visitschedules` (
 INSERT INTO `tdat_visitschedules` (`id`, `iduser`, `datetimestart`, `datetimeend`, `idcustomer`, `idvisitpurpose`, `idstage`) VALUES
 (1, 2, '2015-12-04 00:00:00', '2015-12-12 00:00:00', 2, 3, 1),
 (2, 45, '2016-01-01 00:00:00', '2016-01-29 00:00:00', 2, 1, 4),
-(3, 45, '2015-12-25 00:00:00', '2015-12-26 00:00:00', 1, 2, 2);
+(3, 45, '2015-12-25 00:00:00', '2015-12-26 00:00:00', 1, 2, 2),
+(4, 45, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 7, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `test`
+--
+
+CREATE TABLE IF NOT EXISTS `test` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `test`
+--
+
+INSERT INTO `test` (`id`, `name`) VALUES
+(1, 'test3'),
+(2, 'test3');
 
 -- --------------------------------------------------------
 
