@@ -292,6 +292,8 @@ class Model_quotations extends CI_Model {
                         c.id AS prospectaccessories_id,
                         c.idaccessories AS prospectaccessories_idaccessories,
                         c.idprospect AS prospectaccessories_idprospect,
+                        c.accquantity AS prospectaccessories_accquantity,
+                        c.is_display_pdf AS prospectaccessories_is_display_pdf,
                         d.id AS accessories_id,
                         d.name AS accessories_name,
                         d.price AS accessories_price,
@@ -329,7 +331,7 @@ class Model_quotations extends CI_Model {
                 FROM tdat_quotations a
                 LEFT JOIN tdat_prospects b ON a.idprospect = b.id 
                 LEFT JOIN tdat_customers c ON b.idcustomer = c.id
-                LEFT JOIN tdat_customercp d ON b.id = d.idcustomer
+                LEFT JOIN tdat_customercp d ON c.id = d.idcustomer
                 WHERE a.idprospect = " . $idprospect . "
                 ORDER BY a.id ASC";
 
@@ -351,7 +353,8 @@ class Model_quotations extends CI_Model {
                         d.id AS productprices_id,
                         d.idproduct AS productprices_idproduct,
                         d.listprice AS productprices_listprice,
-                        d.netprice AS productprices_netprice
+                        d.netprice AS productprices_netprice,
+                        d.currency AS productprices_currency
                 FROM tdat_quotations a
                 LEFT JOIN tdat_prospects b ON a.idprospect = b.id	
                 LEFT JOIN tdat_products c ON b.idproduct = c.id
