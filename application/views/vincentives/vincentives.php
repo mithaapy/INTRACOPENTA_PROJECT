@@ -23,12 +23,13 @@
                                     <td style="text-align: center; vertical-align: middle;"><?php echo $no = $no + 1 ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_id ?></td>
                                     <td style="text-align: left; vertical-align: middle;"><?php echo $row->leads_projectname ?></td>
-                                    <td style="text-align: left; vertical-align: middle;"><?php echo $row->users_firstname.' - '.$row->users_lastname ?></td>
+<!--                                    <td style="text-align: left; vertical-align: middle;"><?php //echo $row->users_firstname.' - '.$row->users_lastname ?></td>-->
+                                    <td style="text-align: left; vertical-align: middle;"><?php echo $row->incentives_iduser ?></td>
 									<td style="text-align: left; vertical-align: middle;"><?php echo $row->incentives_value ?></td>
                                     <td style="text-align: center; vertical-align: middle;">
-                                        <a class='btn btn-primary btn-sm' href='javascript:;' onclick="action_form('detail', '<?php echo $row->incentives_id ?>')" title="Detail"><i class='fa fa-search'></i></a>
-                                        <a class='btn btn-default btn-sm' href='javascript:;' onclick="action_form('print', '<?php echo $row->incentives_id ?>')" title="Print"><i class='fa fa-print'></i></a>
-                                        <a class='btn btn-warning btn-sm' href='<?php echo base_url() ?>index.php/conincentives/delete/<?php echo $row->incentives_id ?>' title="Delete" onclick="return confirm('Are you sure want to delete this data?')"><i class='fa fa-trash-o'></i></a>
+<!--                                        <a class='btn btn-primary btn-sm' href='javascript:;' onclick="action_form('detail', '<?php //echo $row->incentives_id ?>')" title="Detail"><i class='fa fa-search'></i></a>-->
+                                        <a class='btn btn-default btn-sm' href='<?php echo base_url() ?>index.php/conincentives/exportpdf/<?php echo $row->incentives_id ?>'  title="Print"><i class='fa fa-print'></i></a>
+<!--                                        <a class='btn btn-warning btn-sm' href='<?php echo base_url() ?>index.php/conincentives/delete/<?php //echo $row->incentives_id ?>' title="Delete" onclick="return confirm('Are you sure want to delete this data?')"><i class='fa fa-trash-o'></i></a>-->
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
