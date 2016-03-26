@@ -62,11 +62,30 @@ class Conquotations extends CI_Controller {
             $query2=  $this->db->get();
             $data['accessories']=  $query2->result_array();
             
+            /*
+             * promotions associated with prospect
+             */
+            $this->db->select('*');
+            $this->db->from('tdat_prospectpromotions');
+            $this->db->where('idprospect',$id);
+            $querypt=  $this->db->get();
+            $data['promotions']=  $querypt->result_array();
+            
             $data['data_prospects'] = $this->model_prospects->viewdetail($id);
+            
             $this->db->select('*');
             $this->db->from('tdat_accessories');
             $query=  $this->db->get();
             $data['data_accessories']=  $query->result();
+            
+            /*
+             * fetching all promotions
+             */
+            $this->db->select('*');
+            $this->db->from('tdat_productpromotions');
+            $queryp=  $this->db->get();
+            $data['data_promotions']=  $queryp->result();
+            
             echo $this->load->view('vquotations/vquotationsform', $data, TRUE);
         elseif ($tipe == 'pdf'):
             $data['data_quotations'] = $this->model_quotations->viewdetail($id);
@@ -82,6 +101,11 @@ class Conquotations extends CI_Controller {
         $quotaiondesc=$this->input->post('quotaiondesc');
        $ct= 0;
         $accessories=$this->input->post('accessories');
+        $accquantity=$this->input->post('accquantity');
+        $is_display_pdf=  $this->input->post('is_display_pdf');
+        //print_r($is_display_pdf); die;
+        $promotions=$this->input->post('promotions');
+        //print_r($promotions); die('Test');
         if(!empty($quotaions)):
             foreach ($quotaions as $quotaion):
             $this->db->select('quotation_id');
@@ -128,10 +152,10 @@ class Conquotations extends CI_Controller {
 //            endfor;
 
         endif;
-       
+        $at= 0;
         if(!empty($accessories)):
            foreach ($accessories as $accessory):
-            $this->db->select('idaccessories');
+            $this->db->select('id,idaccessories');
             $this->db->from('tdat_prospectaccessories');
             $this->db->where('idaccessories',$accessory);
             $this->db->where('idprospect',$post['id']);
@@ -140,14 +164,50 @@ class Conquotations extends CI_Controller {
             if($count1!=1):
             $insert_data1=array(
                 'idprospect'=>$post['id'],
-                'idaccessories'=>$accessory
+                'idaccessories'=>$accessory,
+                'accquantity'=>$accquantity[$at]
             );
      $this->db->insert('tdat_prospectaccessories', $insert_data1);
+     //$insert_id=  $this->db->insert_id();
+       endif;
+       $accres=$query3->result_array();
+       foreach($accres as $acc):
+           $acc_id=$acc['id'];
+      
+       $update_data=array(
+         'accquantity'=>$accquantity[$at],
+           'is_display_pdf'=>$is_display_pdf[$at]
+     );
+     $this->db->where('id',$acc_id);
+     $this->db->update('tdat_prospectaccessories', $update_data);
+       
+       $at++;
+       endforeach;
+       
+       
+        endforeach; 
+        endif;
+       
+             
+       
+        if(!empty($promotions)):
+           foreach ($promotions as $promotion):
+            $this->db->select('idpromotion');
+            $this->db->from('tdat_prospectpromotions');
+            $this->db->where('idpromotion',$promotion);
+            $this->db->where('idprospect',$post['id']);
+            $queryp=  $this->db->get();
+            $countp=  $queryp->num_rows();
+            if($countp!=1):
+            $insert_datap=array(
+                'idprospect'=>$post['id'],
+                'idpromotion'=>$promotion
+            );
+     $this->db->insert('tdat_prospectpromotions', $insert_datap);
        endif;
         endforeach; 
         endif;
-            
-       
+        
         
         $data_save = array(
             'id' => $post['id'],
@@ -175,6 +235,8 @@ class Conquotations extends CI_Controller {
         //$this->load->library('pdf');
         $this->load->library('roman');
         define('FPDF_FONTPATH',$this->config->item('fonts_path'));
+       
+        
         $data_pros = $this->model_prospects->viewdetail($idprospect);
         //var_dump($data_pros); die;
         $data_quotations = $this->model_quotations->viewdetail($idprospect);
@@ -207,7 +269,18 @@ class Conquotations extends CI_Controller {
         else : 
             $gender = 'Mrs. ';
         endif;
-        $pdt_net_price=$data_productprices[0]->productprices_netprice;
+        //$pdt_net_price=$data_productprices[0]->productprices_netprice;
+        $p_id=$data_quotations[0]->quotations_idprospect;
+       $this->db->select('*');
+       $this->db->from('tdat_discounts');
+       $this->db->where('prospect_id',$p_id);
+       $disquery=  $this->db->get();
+       $disRes=$disquery->result();
+       $dis_per=$disRes[0]->discount_per;
+       
+        $unit_price=$data_productprices[0]->productprices_listprice;
+        $dis_unit_price=($dis_per)?$unit_price-(($unit_price*$dis_per)/100):$unit_price;
+        
         $i=1;
         $html='<!DOCTYPE html>
 <html >
@@ -262,52 +335,60 @@ class Conquotations extends CI_Controller {
               <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; text-align:center;">'.$i.'</td>
               <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px;">'.$data_quotations[0]->products_specification.'</td>
               <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; ">'.$data_quotations[0]->prospects_quantity.'</td>
-              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:center;">$ '.number_format($data_productprices[0]->productprices_listprice, 2, '.', ',').' / Un</td>';
-              $net_prise=$data_quotations[0]->prospects_quantity*$data_productprices[0]->productprices_listprice;
-              $html.='<td style="border-bottom:1px solid #333; font-size:11px; text-align:right;">$ '.number_format($net_prise, 2, '.', ',').'</td>
+              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:center;">'.$data_productprices[0]->productprices_currency.' '.number_format($dis_unit_price, 2, '.', ',').' / Un</td>';
+        $pdt_net_price=$data_quotations[0]->prospects_quantity*$unit_price;
+        $net_prise=$data_quotations[0]->prospects_quantity*$dis_unit_price;
+              $html.='<td style="border-bottom:1px solid #333; font-size:11px; text-align:center;">'.$data_productprices[0]->productprices_currency.' '.number_format($net_prise, 2, '.', ',').'</td>
           </tr>';
          /*
           * Accessories
           */
+              $pdt_acc_price=0;
         $acc_total_price=0;
        if(!empty($data_prospectaccessories[0]->accessories_name)):
            $i++;
            foreach ($data_prospectaccessories as $data_prospectaccessori):
+               $accs_unit_price=($dis_per)?$data_prospectaccessori->accessories_price-(($data_prospectaccessori->accessories_price*$dis_per)/100):$data_prospectaccessori->accessories_price;
+           $accs_dis_price=$data_prospectaccessori->prospectaccessories_accquantity*$accs_unit_price;
            $html.=' <tr>
-              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px;">'.$i.'</td>
+              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:center;">'.$i.'</td>
               <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px;">'.$data_prospectaccessori->accessories_name.'</td>
-              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px;">1</td>
-              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:right;">$ '.number_format($data_prospectaccessori->accessories_price, 2, '.', ',').'</td>
-              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:right;">$ '.number_format($data_prospectaccessori->accessories_price, 2, '.', ',').'</td>
-          </tr>';
-           $acc_total_price+=$data_prospectaccessori->accessories_price;
+              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px;">'.$data_prospectaccessori->prospectaccessories_accquantity.'</td>';
+        if($data_prospectaccessori->prospectaccessories_is_display_pdf=="Y"):
+            $html.='<td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:right;">'.$data_prospectaccessori->accessories_currency.' '.number_format($accs_unit_price, 2, '.', ',').'</td>
+              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:right;">'.$data_prospectaccessori->accessories_currency.' '.number_format($accs_dis_price, 2, '.', ',').'</td>';
+        else:
+            $html.='<td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:right;"></td>
+              <td style="border-bottom:1px solid #333; font-size:11px; border-right:1px solid #333; padding:0 10px 0 10px; text-align:right;"></td>';
+        endif;
+           
+          
+      $html.=' </tr>';
+           $pdt_acc_price+=$data_prospectaccessori->prospectaccessories_accquantity*$data_prospectaccessori->accessories_price;
+           $acc_total_price+=$accs_dis_price;
            $i++;
         endforeach;
        endif;
-        $total_price=$pdt_net_price+$acc_total_price;
+        $total_price=$net_prise+$acc_total_price;
+        $pdt_total_price=$pdt_net_price+$pdt_acc_price;
          $html.=' <tr>
               <td></td>
               <td></td>
               <td style="border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;"></td>
               <td style="border-bottom:1px solid #333; border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;">Total</td>
-              <td style="border-bottom:1px solid #333; border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px; text-align:right;">$ '.number_format($total_price, 2, '.', ',').'</td>
+              <td style="border-bottom:1px solid #333; border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px; text-align:right;">'.$data_productprices[0]->productprices_currency.' '.number_format($total_price, 2, '.', ',').'</td>
           </tr>';
         
-          $p_id=$data_quotations[0]->quotations_idprospect;
-       $this->db->select('*');
-       $this->db->from('tdat_discounts');
-       $this->db->where('prospect_id',$p_id);
-       $disquery=  $this->db->get();
-       $disRes=$disquery->result();
-       if($disRes[0]->discount_price):
-           $html.=' <tr>
-              <td></td>
-              <td></td>
-              <td style=" border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;"></td>
-              <td style="border-bottom:1px solid #333; border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;">Discount</td>
-              <td style="border-bottom:1px solid #333; border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;">$ '.number_format($disRes[0]->discount_price, 2, '.', ',').'</td>
-          </tr>';
-       endif;
+          
+//       if($disRes[0]->discount_price):
+//           $html.=' <tr>
+//              <td></td>
+//              <td></td>
+//              <td style=" border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;"></td>
+//              <td style="border-bottom:1px solid #333; border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;">Discount</td>
+//              <td style="border-bottom:1px solid #333; border-right:1px solid #333; font-size:11px; padding:0 10px 0 10px;">$ '.number_format($disRes[0]->discount_price, 2, '.', ',').'</td>
+//          </tr>';
+//       endif;
         $html.=' </table>';
          /*
           * Quotations
@@ -326,22 +407,50 @@ class Conquotations extends CI_Controller {
             $query_qtexts=  $this->db->get();
             $qtexts=$query_qtexts->result_array();
              $html.=' 
-      <table style="width:420px; margin:0px auto;">';
+      <table style="width:550px;">';
             foreach ($qtexts as $qtext):
                 
          $html.='  <tr>
-              <td style="font-size:11px;">'.$qtext['name'].'</td>
-              <td style="font-size:11px;">'.$q_id['quotation_desc'].'</td>
+              <td style="font-size:11px; text-align:left; padding-left:22px; width:150px;">'.$qtext['name'].'</td>
+              <td style="font-size:11px; text-align:left; float:left; width:350px; padding-left:35px;">'.$q_id['quotation_desc'].'</td>
           </tr>';
             endforeach;
             $html.='</table>';
                 endforeach;
             endif;
-       
+        /*
+         * fetching promotions associated with prospect
+         */
+        $sql = "SELECT	a.id AS promotion_id,
+                        a.name AS promotion_name,
+                        a.description AS promotion_desc,
+                        b.idprospect as promotion_prospectid
+                       
+                FROM tdat_productpromotions a
+                INNER JOIN tdat_prospectpromotions b ON a.id = b.idpromotion
+                
+                WHERE b.idprospect = " . $idprospect . " 
+                ORDER BY a.id ASC";
+       // echo $sql; die;
+        $querypromo = $this->db->query($sql);
+        $promores= $querypromo->result();
+        
+        if($promores):
+            $html.=' <br/><br/>
+      <table style="width:550px;">';
+            foreach ($promores as $promor):
+            $html.='  <tr>
+              <td style="font-size:11px; text-align:left; padding-left:22px; width:150px;">'.$promor->promotion_name.'</td>
+              <td style="font-size:11px; text-align:left; float:left; width:350px; padding-left:35px;">'.$promor->promotion_desc.'</td>
+          </tr>';
+            endforeach;
+            $html.='</table>';
+        endif;
+        
       $html.='  <div class="faithfully-quote" style="width:650px; text-align: right; margin:auto; font-size:11px;">
           Very truly yours,<br />
 '.$data_quotations[0]->companies_name.'
-      </div><br/>';
+      </div><br/><br/><br/>';
      
       $html.='  <div class="faithfully-quote" style="width:650px; text-align: right; margin:auto; font-size:11px;">'.
           $sFname.$sLname.',<br />
@@ -350,7 +459,7 @@ class Conquotations extends CI_Controller {
       </div>';
    $html.=' </body>
 </html>
-';
+';//echo $html; die;
        /*
         * Check that quotaion no exists in tdat_discounts table
         * if not, Insert into tdat_discounts table.
@@ -358,17 +467,17 @@ class Conquotations extends CI_Controller {
         */         
     
        $countDis=$disquery->num_rows();
-       if($countDis!=1):
-//           $update_data=array(
-//           'discount_price'=>$total_price
-//       );
-//       $this->db->where('prospect_id',$p_id);
-//       $this->db->update('tdat_discounts',$update_data);
-//           else:
+       if($countDis==1):
+           $update_data=array(
+           'total_price'=>$pdt_total_price
+       );
+       $this->db->where('prospect_id',$p_id);
+       $this->db->update('tdat_discounts',$update_data);
+           else:
            $insert_data=array(
             'prospect_id'=>$p_id,
            'quotation_no'=>$data_quotations[0]->prospects_quotationno,
-           'total_price'=>$total_price
+           'total_price'=>$pdt_total_price
        );
        $this->db->insert('tdat_discounts',$insert_data);
        endif;
@@ -397,6 +506,13 @@ class Conquotations extends CI_Controller {
        $id=$post['id'];
        $this->db->where('id',$id);
        $this->db->delete('tdat_prospectaccessories');
+       echo 'success';
+    }
+    public function pdelete() {
+       $post = $this->input->post();
+       $id=$post['id'];
+       $this->db->where('id',$id);
+       $this->db->delete('tdat_prospectpromotions');
        echo 'success';
     }
 
